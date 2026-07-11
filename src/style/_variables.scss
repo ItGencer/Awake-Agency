@@ -1,0 +1,39 @@
+$color-ink: #17191c;
+$color-muted: #777777;
+$color-muted-strong: #5f6268;
+$color-white: #ffffff;
+$color-surface: #f3f3f4;
+$color-surface-strong: #eeeeef;
+$color-border: #dedee3;
+$color-purple: #4b24ff;
+$color-yellow: #f7e77a;
+$color-lavender: #eee2ff;
+$color-blue: #ddeeff;
+$color-peach: #ffead8;
+$color-green: #dff2d8;
+$color-pink: #ffe8f1;
+$color-orange: #ffc36a;
+$color-cyan: #9fe8f2;
+
+$font-sans: 'Inter', 'Satoshi', 'Neue Haas Grotesk', Arial, sans-serif;
+$font-serif: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+
+$container-width: 1180px;
+$narrow-width: 860px;
+$radius-card: 0.5rem;
+$radius-panel: 1.5rem;
+$radius-pill: 999px;
+$header-height: 4.25rem;
+
+$space-map: (
+  2xs: 0.25rem,
+  xs: 0.5rem,
+  sm: 0.75rem,
+  md: 1rem,
+  lg: 1.5rem,
+  xl: 2rem,
+  2xl: 3rem,
+  3xl: 4.5rem,
+  4xl: 6rem,
+  5xl: 8rem,
+);

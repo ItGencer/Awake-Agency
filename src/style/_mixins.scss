@@ -1,0 +1,38 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+@function space($key) {
+  @return map.get($space-map, $key);
+}
+
+@mixin container($width: $container-width) {
+  width: min(100% - 2rem, $width);
+  margin-inline: auto;
+}
+
+@mixin section-padding {
+  padding-block: clamp(4.5rem, 9vw, 7.5rem);
+}
+
+@mixin focus-ring {
+  outline: 3px solid rgba($color-purple, 0.24);
+  outline-offset: 4px;
+}
+
+@mixin lift-hover {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+@mixin respond($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}

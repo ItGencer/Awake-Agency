@@ -1,0 +1,559 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: space(xs);
+  min-height: 3rem;
+  padding: 0.8rem 0.95rem 0.8rem 1.25rem;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: $radius-pill;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+
+  &:hover {
+    transform: translateY(-3px);
+
+    .button__icon {
+      transform: translate(2px, -2px) rotate(14deg);
+    }
+  }
+
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    line-height: 1;
+    color: $color-ink;
+    background: $color-white;
+    border-radius: 50%;
+    transition: transform 180ms ease;
+
+    &--dark {
+      color: $color-white;
+      background: $color-ink;
+    }
+  }
+
+  &--dark {
+    color: $color-white;
+    background: $color-ink;
+  }
+
+  &--purple {
+    color: $color-white;
+    background: $color-purple;
+  }
+
+  &--light {
+    color: $color-ink;
+    background: $color-white;
+  }
+
+  &--outline-light {
+    color: $color-white;
+    background: transparent;
+    border-color: rgba($color-white, 0.34);
+  }
+}
+
+.section {
+  @include container;
+  @include section-padding;
+
+  &--soft {
+    width: 100%;
+    max-width: none;
+    padding-inline: max(1rem, calc((100% - #{$container-width}) / 2));
+    background: linear-gradient(180deg, rgba($color-surface, 0.52), rgba($color-white, 0));
+  }
+
+  &__intro {
+    width: min(100%, $narrow-width);
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__eyebrow {
+    margin: 0 0 space(sm);
+    color: $color-purple;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    margin: 0;
+    color: $color-ink;
+    font-size: clamp(2.3rem, 6vw, 5rem);
+    font-weight: 800;
+    line-height: 0.98;
+  }
+}
+
+.service-card {
+  @include lift-hover;
+
+  display: grid;
+  align-content: space-between;
+  min-height: 13rem;
+  padding: space(lg);
+  border: 1px solid rgba($color-ink, 0.06);
+  border-radius: $radius-card;
+
+  &--lavender {
+    background: $color-lavender;
+  }
+
+  &--pink {
+    background: $color-pink;
+  }
+
+  &--blue {
+    background: $color-blue;
+  }
+
+  &--peach {
+    background: $color-peach;
+  }
+
+  &--green {
+    background: $color-green;
+  }
+
+  &__icon {
+    position: relative;
+    display: inline-block;
+    width: 3.2rem;
+    height: 3.2rem;
+    border: 1.5px solid rgba($color-ink, 0.74);
+    border-radius: 50%;
+
+    &::before,
+    &::after {
+      position: absolute;
+      content: '';
+      background: $color-ink;
+    }
+
+    &::before {
+      top: 50%;
+      left: 0.72rem;
+      width: 1.65rem;
+      height: 1.5px;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      top: 0.72rem;
+      left: 50%;
+      width: 1.5px;
+      height: 1.65rem;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__title {
+    max-width: 9rem;
+    margin: space(2xl) 0 0;
+    font-size: 1.25rem;
+    line-height: 1.08;
+  }
+}
+
+.work-card {
+  @include lift-hover;
+
+  &__media {
+    margin: 0;
+    overflow: hidden;
+    aspect-ratio: 1.22 / 1;
+    background: $color-surface;
+    border-radius: $radius-card;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 420ms ease;
+    }
+  }
+
+  &:hover img {
+    transform: scale(1.045);
+  }
+
+  &__body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: space(md);
+    margin-top: space(md);
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(1.35rem, 2vw, 1.8rem);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: space(xs);
+
+    span {
+      padding: 0.45rem 0.7rem;
+      color: $color-muted-strong;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid $color-border;
+      border-radius: $radius-pill;
+    }
+  }
+}
+
+.team-card {
+  text-align: center;
+
+  &__portrait {
+    display: grid;
+    place-items: end center;
+    overflow: hidden;
+    aspect-ratio: 1 / 1.08;
+    margin: 0;
+    border-radius: 46% 54% 46% 54% / 58% 46% 54% 42%;
+    background: var(--team-bg);
+
+    img {
+      width: 84%;
+      height: 92%;
+      object-fit: cover;
+      object-position: top;
+      filter: saturate(0.98);
+      mix-blend-mode: multiply;
+    }
+  }
+
+  &--purple {
+    --team-bg: #b6a4ff;
+  }
+
+  &--orange {
+    --team-bg: #ffc36a;
+  }
+
+  &--yellow {
+    --team-bg: #f7e77a;
+  }
+
+  &--cyan {
+    --team-bg: #9fe8f2;
+  }
+
+  &__name {
+    margin: space(md) 0 0;
+    font-size: 1.2rem;
+  }
+
+  &__role {
+    margin: 0.25rem 0 space(sm);
+    color: $color-muted;
+    font-size: 0.92rem;
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: center;
+    gap: space(xs);
+
+    a {
+      display: inline-grid;
+      place-items: center;
+      width: 2.15rem;
+      height: 2.15rem;
+      color: $color-ink;
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-decoration: none;
+      background: $color-white;
+      border: 1px solid $color-border;
+      border-radius: 50%;
+      transition: transform 180ms ease;
+
+      &:hover {
+        transform: translateY(-3px);
+      }
+    }
+  }
+}
+
+.testimonial-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 17rem;
+  padding: space(xl);
+  border-radius: $radius-card;
+
+  &--photo {
+    min-height: 32rem;
+    color: $color-white;
+    background: $color-ink;
+
+    img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.62;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: auto space(xl) space(xl);
+    z-index: 1;
+
+    p {
+      max-width: 28rem;
+      margin: 0 0 space(md);
+      font-size: clamp(1.45rem, 3vw, 2.45rem);
+      font-weight: 700;
+      line-height: 1.08;
+    }
+
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &--stat {
+    display: grid;
+    align-content: space-between;
+    background: $color-yellow;
+
+    strong {
+      font-size: clamp(4rem, 8vw, 6.8rem);
+      line-height: 0.9;
+    }
+
+    p {
+      max-width: 22rem;
+      margin: 0;
+      color: rgba($color-ink, 0.74);
+      font-weight: 700;
+    }
+  }
+
+  &--dark {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 8rem;
+    align-items: end;
+    gap: space(md);
+    color: $color-white;
+    background: $color-ink;
+
+    p {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    img {
+      width: 8rem;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: $radius-card;
+    }
+  }
+
+  &--quote {
+    display: grid;
+    align-content: center;
+    background: $color-surface;
+
+    p {
+      margin: 0 0 space(lg);
+      font-size: clamp(1.65rem, 3vw, 3rem);
+      font-weight: 800;
+      line-height: 1.05;
+    }
+
+    span {
+      color: $color-muted;
+      font-weight: 700;
+    }
+  }
+}
+
+.pricing-card {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border-radius: $radius-card;
+
+  &--starter {
+    background: $color-yellow;
+  }
+
+  &--pro {
+    color: $color-white;
+    background:
+      radial-gradient(circle at 82% 16%, rgba($color-white, 0.22), transparent 32%),
+      $color-purple;
+  }
+
+  &__badge {
+    display: inline-flex;
+    padding: 0.48rem 0.78rem;
+    font-weight: 800;
+    background: rgba($color-white, 0.68);
+    border-radius: $radius-pill;
+  }
+
+  &--pro &__badge {
+    color: $color-purple;
+    background: $color-white;
+  }
+
+  &__price {
+    margin: space(xl) 0 space(lg);
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    line-height: 0.94;
+
+    span {
+      display: block;
+      margin-top: space(xs);
+      font-size: 1rem;
+      font-weight: 700;
+      opacity: 0.72;
+    }
+  }
+
+  &__button {
+    margin-bottom: space(xl);
+  }
+
+  &__features {
+    display: grid;
+    gap: space(sm);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      position: relative;
+      padding-left: 1.8rem;
+      font-weight: 700;
+
+      &::before {
+        position: absolute;
+        left: 0;
+        content: '\2713';
+      }
+    }
+  }
+}
+
+.faq {
+  &__list {
+    display: grid;
+    gap: space(sm);
+    max-width: 880px;
+    margin: space(2xl) auto 0;
+  }
+
+  &__item {
+    background: $color-white;
+    border: 1px solid $color-border;
+    border-radius: $radius-card;
+  }
+
+  &__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: space(md);
+    width: 100%;
+    padding: 1.25rem 1.4rem;
+    color: $color-ink;
+    font-weight: 800;
+    text-align: left;
+    background: transparent;
+    border: 0;
+  }
+
+  &__chevron {
+    flex: 0 0 auto;
+    width: 0.72rem;
+    height: 0.72rem;
+    border-right: 2px solid $color-ink;
+    border-bottom: 2px solid $color-ink;
+    transform: rotate(45deg);
+    transition: transform 180ms ease;
+  }
+
+  &__question[aria-expanded='true'] &__chevron {
+    transform: rotate(225deg);
+  }
+
+  &__answer {
+    padding: 0 1.4rem 1.3rem;
+    color: $color-muted;
+
+    p {
+      max-width: 46rem;
+      margin: 0;
+    }
+  }
+}
+
+.award-card {
+  @include lift-hover;
+
+  display: grid;
+  min-height: 20rem;
+  padding: space(xl);
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $radius-card;
+
+  &__icon {
+    display: inline-grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    color: $color-white;
+    font-weight: 800;
+    background: $color-ink;
+    border-radius: 50%;
+  }
+
+  &__name {
+    align-self: end;
+    margin: 0 0 space(xs);
+    color: $color-muted;
+    font-weight: 700;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.08;
+  }
+
+  &__year {
+    align-self: end;
+    margin-top: space(xl);
+    color: $color-purple;
+    font-weight: 800;
+  }
+}
