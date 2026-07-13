@@ -5,7 +5,7 @@ class AwakeSite {
     this.header = document.querySelector('[data-header]');
     this.menu = document.querySelector('[data-menu]');
     this.menuToggle = document.querySelector('[data-menu-toggle]');
-    this.navLinks = [...document.querySelectorAll('[data-nav-link]')];
+    this.navLinks = [...document.querySelectorAll('.site-header__nav-link[data-nav-link]')];
     this.faqButtons = [...document.querySelectorAll('[data-faq-button]')];
     this.yearElements = [...document.querySelectorAll('[data-year]')];
   }
