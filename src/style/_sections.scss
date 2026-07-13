@@ -2,46 +2,40 @@
 @use 'mixins' as *;
 
 .hero {
-  min-height: 88svh;
-  padding: 8rem 1rem 4rem;
-  background:
-    radial-gradient(circle at 16% 24%, rgba($color-blue, 0.92), transparent 30%),
-    radial-gradient(circle at 84% 30%, rgba($color-yellow, 0.7), transparent 34%),
-    linear-gradient(100deg, #eff8ff 0%, #ffffff 46%, #fff4cf 100%);
+  overflow: hidden;
+  padding: clamp(6.2rem, 8vw, 7rem) 1rem clamp(6rem, 9vw, 7.2rem);
+  background: linear-gradient(105deg, #eaf9ff 0%, #fbfcfa 50%, #fff4df 100%);
 
   &__content {
     display: grid;
     justify-items: center;
-    width: min(100%, 1040px);
+    width: min(100%, 1180px);
     margin-inline: auto;
     text-align: center;
   }
 
-  &__eyebrow {
-    margin: 0 0 space(md);
-    padding: 0.5rem 0.8rem;
-    color: $color-purple;
-    font-size: 0.78rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    background: rgba($color-white, 0.72);
-    border: 1px solid rgba($color-white, 0.9);
-    border-radius: $radius-pill;
-  }
-
   &__title {
-    max-width: 11.4ch;
+    max-width: 1040px;
     margin: 0;
-    font-size: clamp(3.35rem, 10vw, 8.6rem);
+    color: $color-ink;
+    font-size: clamp(4.8rem, 6.4vw, 6.2rem);
     font-weight: 800;
-    line-height: 0.9;
+    line-height: 1.05;
+
+    em {
+      display: inline-block;
+      font-weight: 700;
+      line-height: 0.86;
+    }
   }
 
   &__text {
-    max-width: 42rem;
-    margin: space(lg) 0 0;
-    color: $color-muted-strong;
-    font-size: clamp(1rem, 2vw, 1.18rem);
+    max-width: 720px;
+    margin: 1.45rem 0 0;
+    color: #757a7f;
+    font-size: clamp(1rem, 1.2vw, 1.08rem);
+    font-weight: 500;
+    line-height: 1.45;
   }
 
   &__actions {
@@ -49,85 +43,160 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: space(lg);
-    margin-top: space(xl);
+    gap: 1.6rem;
+    margin-top: 2.05rem;
   }
 
   &__button {
     min-height: 4rem;
-    padding-left: 1.6rem;
+    min-width: 16rem;
+    justify-content: space-between;
+    padding: 0.48rem 0.48rem 0.48rem 1.55rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #4b24ff, #5a2dff);
+    box-shadow: 0 18px 38px rgba($color-purple, 0.2);
+
+    .button__icon {
+      width: 2.75rem;
+      height: 2.75rem;
+      font-size: 1.08rem;
+    }
   }
 
   &__trust {
     display: flex;
     align-items: center;
-    gap: space(sm);
+    gap: 1.15rem;
   }
 
   &__avatars {
     display: flex;
 
     img {
-      width: 2.45rem;
-      height: 2.45rem;
+      width: 2.2rem;
+      height: 2.2rem;
       object-fit: cover;
-      border: 3px solid $color-white;
+      border: 2px solid $color-white;
       border-radius: 50%;
 
       + img {
-        margin-left: -0.75rem;
+        margin-left: -0.62rem;
       }
     }
   }
 
   &__rating {
     display: grid;
-    gap: 0.1rem;
-    color: $color-ink;
-    font-size: 0.86rem;
-    font-weight: 800;
+    gap: 0.18rem;
+    color: #62666c;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.1;
     text-align: left;
   }
 
   &__stars {
-    color: #e0a400;
-    font-size: 0.85rem;
+    color: #f39a00;
+    font-size: 1.12rem;
+    letter-spacing: 0.02rem;
     line-height: 1;
   }
 }
 
 .proof {
-  @include container;
-
-  padding-block: space(xl);
+  overflow: hidden;
+  padding: 0 0 2.1rem;
+  background: linear-gradient(105deg, #eaf9ff 0%, #fbfcfa 50%, #fff4df 100%);
 
   &__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: space(lg);
-    padding-block: space(md);
-    border-bottom: 1px solid $color-border;
+    width: 100%;
   }
 
   &__text {
-    max-width: 20rem;
-    margin: 0;
-    color: $color-muted;
-    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: min(100% - 2rem, 760px);
+    margin: 0 auto;
+    color: #5e646b;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+
+    &::before,
+    &::after {
+      flex: 1 1 10rem;
+      height: 1px;
+      content: '';
+      background: rgba($color-ink, 0.12);
+    }
+  }
+
+  &__marquee {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    margin-top: 2.25rem;
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
   }
 
   &__logos {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: clamp(1rem, 3vw, 2.3rem);
+    align-items: center;
+    flex: 0 0 auto;
+    gap: clamp(3.25rem, 6vw, 6.2rem);
     margin: 0;
-    padding: 0;
-    color: #a0a0a5;
-    font-size: clamp(1rem, 2vw, 1.35rem);
-    font-weight: 800;
+    padding: 0 clamp(1.6rem, 4vw, 3rem);
     list-style: none;
+    animation: proof-marquee 26s linear infinite;
+  }
+
+  &__logo {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+
+    svg {
+      width: clamp(10.25rem, 13vw, 12.75rem);
+      height: auto;
+      overflow: visible;
+    }
+
+    &--lavender {
+      color: #cbb7ff;
+    }
+
+    &--green {
+      color: #1fc486;
+    }
+
+    &--orange {
+      color: #ff7425;
+    }
+
+    &--black {
+      color: $color-ink;
+    }
+
+    &--blue {
+      color: #4b24ff;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__logos {
+      animation-duration: 0.01ms;
+      animation-iteration-count: 1;
+    }
+  }
+}
+
+@keyframes proof-marquee {
+  to {
+    transform: translateX(-100%);
   }
 }
 
@@ -335,13 +404,13 @@
 
 @include respond(860px) {
   .proof {
-    &__inner {
-      align-items: flex-start;
-      flex-direction: column;
-    }
+    &__text {
+      white-space: normal;
 
-    &__logos {
-      justify-content: flex-start;
+      &::before,
+      &::after {
+        flex-basis: 5rem;
+      }
     }
   }
 
@@ -385,8 +454,28 @@
 
 @include respond(640px) {
   .hero {
-    min-height: 86svh;
-    padding-top: 7rem;
+    padding: 7rem 1rem 5rem;
+
+    &__title {
+      width: 100%;
+      max-width: 20rem;
+      font-size: clamp(2.7rem, 11vw, 3rem);
+      line-height: 1.05;
+
+      em {
+        display: inline;
+      }
+    }
+
+    &__text {
+      max-width: 22rem;
+      margin-top: 1.2rem;
+      font-size: 0.96rem;
+    }
+
+    &__button {
+      width: min(100%, 16rem);
+    }
 
     &__actions,
     &__trust {
@@ -395,6 +484,35 @@
 
     &__trust {
       justify-content: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  .proof {
+    padding-bottom: 1.6rem;
+
+    &__text {
+      gap: 0.65rem;
+      font-size: 0.92rem;
+
+      &::before,
+      &::after {
+        flex-basis: 2rem;
+      }
+    }
+
+    &__marquee {
+      margin-top: 1.7rem;
+    }
+
+    &__logos {
+      gap: 2.25rem;
+      padding-inline: 1rem;
+      animation-duration: 18s;
+    }
+
+    &__logo svg {
+      width: 9.2rem;
     }
   }
 
