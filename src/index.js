@@ -8,6 +8,8 @@ class AwakeSite {
     this.navLinks = [...document.querySelectorAll('.site-header__nav-link[data-nav-link]')];
     this.faqButtons = [...document.querySelectorAll('[data-faq-button]')];
     this.yearElements = [...document.querySelectorAll('[data-year]')];
+    this.scrollFillElements = [...document.querySelectorAll('[data-scroll-fill]')];
+    this.scrollFillFrame = null;
   }
 
   init() {
@@ -16,6 +18,7 @@ class AwakeSite {
     this.bindSmoothScroll();
     this.bindFaq();
     this.observeSections();
+    this.bindScrollFill();
   }
 
   setCurrentYear() {
@@ -96,6 +99,51 @@ class AwakeSite {
     );
 
     sections.forEach((section) => observer.observe(section));
+  }
+
+  bindScrollFill() {
+    if (!this.scrollFillElements.length) return;
+
+    const queueUpdate = () => {
+      if (this.scrollFillFrame) return;
+
+      this.scrollFillFrame = window.requestAnimationFrame(() => {
+        this.scrollFillFrame = null;
+        this.updateScrollFill();
+      });
+    };
+
+    this.updateScrollFill();
+    window.addEventListener('scroll', queueUpdate, { passive: true });
+    window.addEventListener('resize', queueUpdate);
+  }
+
+  updateScrollFill() {
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    const startLine = viewportHeight * 0.88;
+    const fillRange = Math.min(720, Math.max(360, viewportHeight * 0.58 + viewportWidth * 0.08));
+
+    this.scrollFillElements.forEach((element) => {
+      const rect = element.getBoundingClientRect();
+      const progress = Math.min(1, Math.max(0, (startLine - rect.top) / fillRange));
+      const words = [...element.querySelectorAll('[data-scroll-fill-word]')];
+
+      if (!words.length) {
+        element.style.setProperty('--about-title-fill', `${Math.round(progress * 100)}%`);
+        return;
+      }
+
+      const fadeSpread = 1.85;
+      const fillCursor = progress * (words.length + fadeSpread);
+
+      words.forEach((word, index) => {
+        const wordProgress = Math.min(1, Math.max(0, (fillCursor - index) / fadeSpread));
+        const alpha = 0.16 + wordProgress * 0.84;
+
+        word.style.color = `rgba(23, 25, 28, ${alpha.toFixed(3)})`;
+      });
+    });
   }
 
   setActiveLink(hash) {
