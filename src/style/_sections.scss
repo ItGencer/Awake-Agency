@@ -213,11 +213,6 @@
     line-height: 1.16;
   }
 
-  &__title [data-scroll-fill-word] {
-    color: rgba($color-ink, 0.16);
-    transition: color 80ms linear;
-  }
-
   &__tags {
     display: flex;
     flex-wrap: wrap;
@@ -415,10 +410,6 @@
     line-height: 0.98;
     letter-spacing: 0;
 
-    span {
-      display: block;
-    }
-
     em {
       color: rgba($color-ink, 0.18);
       font-family: $font-serif;
@@ -469,10 +460,6 @@
     line-height: 1.1;
     letter-spacing: 0;
 
-    span {
-      display: block;
-    }
-
     em {
       color: rgba($color-ink, 0.18);
       font-family: $font-serif;
@@ -503,10 +490,6 @@
     line-height: 1.16;
     letter-spacing: 0;
 
-    span {
-      display: block;
-    }
-
     em {
       color: rgba($color-ink, 0.18);
       font-family: $font-serif;
@@ -517,46 +500,109 @@
 }
 
 .awards {
+  width: min(100% - 2rem, 77.1rem);
+  max-width: 77.1rem;
+  padding: clamp(4.85rem, 7vw, 5.8rem) 0 clamp(3.2rem, 5.8vw, 4.5rem);
+  background: $color-white;
+
+  &__intro {
+    max-width: 60rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: clamp(2.75rem, 3.35vw, 3.2rem);
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: 0;
+
+    em {
+      color: rgba($color-ink, 0.16);
+      font-family: $font-serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: space(lg);
-    margin-top: space(2xl);
+    gap: 1rem;
+    margin-top: clamp(4.65rem, 5.25vw, 5.25rem);
   }
 }
 
 .final-cta {
-  @include container;
+  width: min(100% - 4.4rem, 77rem);
+  margin-inline: auto;
 
-  padding-block: space(4xl);
+  padding-block: 2.65rem 1.9rem;
 
   &__inner {
     display: grid;
+    align-content: center;
     justify-items: center;
-    min-height: 28rem;
-    padding: clamp(2rem, 8vw, 5rem);
+    min-height: 26.7rem;
+    padding: clamp(2.4rem, 5vw, 4rem);
     text-align: center;
     background:
-      radial-gradient(circle at 12% 26%, rgba($color-blue, 0.86), transparent 34%),
-      radial-gradient(circle at 88% 20%, rgba($color-yellow, 0.72), transparent 34%),
-      linear-gradient(104deg, #f0f8ff, #ffffff 48%, #fff1d9);
-    border: 1px solid rgba($color-ink, 0.06);
-    border-radius: $radius-panel;
+      radial-gradient(circle at 9% 82%, rgba($color-blue, 0.42), transparent 26%),
+      radial-gradient(circle at 91% 83%, rgba($color-yellow, 0.42), transparent 28%),
+      linear-gradient(180deg, $color-white 0%, #ffffff 48%, #fffdf9 100%);
+    border: 1px solid rgba($color-ink, 0.12);
+    border-radius: 1.25rem;
   }
 
   &__title {
-    max-width: 11ch;
+    max-width: 58rem;
     margin: 0;
-    font-size: clamp(3rem, 8vw, 7.3rem);
-    font-weight: 800;
-    line-height: 0.9;
+    color: $color-ink;
+    font-size: clamp(2.55rem, 3.55vw, 3.1rem);
+    font-weight: 500;
+    line-height: 1.08;
+    letter-spacing: 0;
+    white-space: nowrap;
+
+    em {
+      color: rgba($color-ink, 0.16);
+      font-family: $font-serif;
+      font-style: italic;
+      font-weight: 500;
+    }
   }
 
   &__text {
-    max-width: 40rem;
-    margin: space(lg) 0 space(xl);
+    max-width: 39.5rem;
+    margin: 1rem 0 1.65rem;
     color: $color-muted-strong;
-    font-size: 1.08rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  &__button {
+    width: 13.2rem;
+    min-height: 3.1rem;
+    padding: 0.45rem 0.45rem 0.45rem 1.25rem;
+    font-size: 0.98rem;
+    font-weight: 800;
+
+    .button__icon {
+      width: 2.1rem;
+      height: 2.1rem;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+[data-scroll-fill] {
+  color: rgba(23, 25, 28, var(--scroll-fill-alpha, 0.16));
+  transition: color 80ms linear;
+
+  em {
+    color: inherit;
   }
 }
 
@@ -641,6 +687,14 @@
   .testimonials {
     .testimonial-card {
       grid-column: 1 / -1;
+    }
+  }
+
+  .final-cta {
+    width: min(100% - 2rem, 77rem);
+
+    &__title {
+      white-space: normal;
     }
   }
 }

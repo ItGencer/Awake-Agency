@@ -167,29 +167,14 @@ class AwakeSite {
 
   updateScrollFill() {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    const startLine = viewportHeight * 0.88;
-    const fillRange = Math.min(720, Math.max(360, viewportHeight * 0.58 + viewportWidth * 0.08));
+    const fillRange = Math.max(1, viewportHeight);
 
     this.scrollFillElements.forEach((element) => {
       const rect = element.getBoundingClientRect();
-      const progress = Math.min(1, Math.max(0, (startLine - rect.top) / fillRange));
-      const words = [...element.querySelectorAll('[data-scroll-fill-word]')];
+      const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / fillRange));
+      const alpha = 0.16 + progress * 0.84;
 
-      if (!words.length) {
-        element.style.setProperty('--about-title-fill', `${Math.round(progress * 100)}%`);
-        return;
-      }
-
-      const fadeSpread = 1.85;
-      const fillCursor = progress * (words.length + fadeSpread);
-
-      words.forEach((word, index) => {
-        const wordProgress = Math.min(1, Math.max(0, (fillCursor - index) / fadeSpread));
-        const alpha = 0.16 + wordProgress * 0.84;
-
-        word.style.color = `rgba(23, 25, 28, ${alpha.toFixed(3)})`;
-      });
+      element.style.setProperty('--scroll-fill-alpha', alpha.toFixed(3));
     });
   }
 
