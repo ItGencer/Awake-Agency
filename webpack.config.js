@@ -11,14 +11,14 @@ module.exports = (_env, argv) => {
     entry: path.resolve(__dirname, 'src', 'index.js'),
     output: {
       filename: 'script/[name].[contenthash:8].js',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'public'),
       assetModuleFilename: 'assets/[name].[contenthash:8][ext][query]',
       clean: true,
     },
     devtool: isProduction ? 'source-map' : 'eval-cheap-module-source-map',
     devServer: {
       static: {
-        directory: path.resolve(__dirname, 'dist'),
+        directory: path.resolve(__dirname, 'public'),
       },
       historyApiFallback: true,
       hot: true,
