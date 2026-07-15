@@ -20,7 +20,7 @@ class AwakeSite {
     this.header = document.querySelector('[data-header]');
     this.menu = document.querySelector('[data-menu]');
     this.menuToggle = document.querySelector('[data-menu-toggle]');
-    this.navLinks = [...document.querySelectorAll('.site-header__nav-link[data-nav-link]')];
+    this.navLinks = [...document.querySelectorAll('.header__nav-link[data-nav-link]')];
     this.faqButtons = [...document.querySelectorAll('[data-faq-button]')];
     this.yearElements = [...document.querySelectorAll('[data-year]')];
     this.scrollFillElements = [...document.querySelectorAll('[data-scroll-fill]')];
@@ -82,7 +82,7 @@ class AwakeSite {
 
   setMenuOpen(isOpen) {
     this.menuToggle?.setAttribute('aria-expanded', String(isOpen));
-    this.menu?.classList.toggle('site-header__panel--open', isOpen);
+    this.menu?.classList.toggle('header__panel--open', isOpen);
     document.body.classList.toggle('page--menu-open', isOpen);
   }
 
@@ -228,7 +228,7 @@ class AwakeSite {
 
   setActiveLink(hash) {
     this.navLinks.forEach((link) => {
-      link.classList.toggle('site-header__nav-link--active', link.hash === hash);
+      link.classList.toggle('header__nav-link--active', link.hash === hash);
     });
   }
 }
