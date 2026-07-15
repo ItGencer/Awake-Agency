@@ -19,12 +19,12 @@
     margin: 0;
     color: $color-ink;
     font-size: clamp(4.8rem, 6.4vw, 6.2rem);
-    font-weight: 800;
+    font-weight: 500;
     line-height: 1.05;
 
     em {
       display: inline-block;
-      font-weight: 700;
+      font-weight: 500;
       line-height: 0.86;
     }
   }
@@ -55,12 +55,6 @@
     font-weight: 800;
     background: linear-gradient(135deg, #4b24ff, #5a2dff);
     box-shadow: 0 18px 38px rgba($color-purple, 0.2);
-
-    .button__icon {
-      width: 2.75rem;
-      height: 2.75rem;
-      font-size: 1.08rem;
-    }
   }
 
   &__trust {
@@ -110,6 +104,9 @@
 
   &__inner {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__text {
@@ -138,7 +135,7 @@
   &__marquee {
     display: flex;
     overflow: hidden;
-    width: 100%;
+    width: 60%;
     margin-top: 2.25rem;
     mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
   }
@@ -326,18 +323,18 @@
     align-items: center;
     justify-content: space-between;
     gap: space(lg);
-    margin-top: space(md);
-    padding: clamp(1.25rem, 4vw, 2rem);
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding: clamp(1.5rem, 3vw, 2rem) clamp(1.75rem, 4vw, 3rem);
     color: $color-white;
     background: $color-ink;
     border-radius: $radius-panel;
 
     p {
-      max-width: 42rem;
+      max-width: 34rem;
       margin: 0;
-      font-size: clamp(1.6rem, 4vw, 3.1rem);
+      font-size: clamp(1.3rem, 1.8vw, 1.55rem);
       font-weight: 800;
-      line-height: 1;
+      line-height: 1.34;
     }
   }
 
@@ -349,11 +346,49 @@
 }
 
 .work {
+  padding-top: clamp(3.8rem, 6vw, 5rem);
+
+  &__intro {
+    max-width: 780px;
+  }
+
+  &__title {
+    color: $color-ink;
+    font-size: clamp(2.85rem, 3.65vw, 4.05rem);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: 0;
+
+    em {
+      color: rgba($color-ink, 0.18);
+      font-family: $font-serif;
+      font-style: italic;
+      font-weight: 700;
+    }
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(2rem, 5vw, 4rem) space(lg);
-    margin-top: space(2xl);
+    align-items: start;
+    gap: clamp(1.35rem, 2.4vw, 2rem) clamp(1.35rem, 2.4vw, 2rem);
+    margin-top: clamp(4rem, 6vw, 5.25rem);
+  }
+}
+
+@media (min-width: 861px) {
+  .work {
+    padding-bottom: clamp(5rem, 8vw, 7rem);
+
+    .work-card {
+      position: sticky;
+      top: var(--work-card-top, 6.25rem);
+
+      &:nth-child(3),
+      &:nth-child(4) {
+        --work-card-top: 7.35rem;
+      }
+    }
   }
 }
 
@@ -367,24 +402,117 @@
 }
 
 .testimonials {
-  &__grid {
-    display: grid;
-    grid-template-columns: 1.25fr 0.85fr;
-    gap: space(md);
-    margin-top: space(2xl);
+  padding-block: clamp(1.5rem, 2.2vw, 2rem) clamp(4.5rem, 7vw, 6rem);
+
+  &__intro {
+    max-width: 42rem;
   }
 
-  .testimonial-card--photo {
-    grid-row: span 2;
+  &__title {
+    color: $color-ink;
+    font-size: clamp(2.35rem, 3.3vw, 3.05rem);
+    font-weight: 500;
+    line-height: 0.98;
+    letter-spacing: 0;
+
+    span {
+      display: block;
+    }
+
+    em {
+      color: rgba($color-ink, 0.18);
+      font-family: $font-serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 1.25rem;
+    width: min(100%, 66.5rem);
+    margin: clamp(4rem, 6.5vw, 4.8rem) auto 0;
+  }
+
+  .testimonial-card {
+    &--photo {
+      grid-column: span 8;
+    }
+
+    &--stat {
+      grid-column: span 4;
+    }
+
+    &--dark {
+      grid-column: span 4;
+    }
+
+    &--quote {
+      grid-column: span 8;
+    }
   }
 }
 
 .pricing {
+  width: min(100% - 2rem, 1232px);
+  padding-block: clamp(3.2rem, 6vw, 4.9rem) clamp(4.8rem, 8vw, 6.8rem);
+
+  &__intro {
+    max-width: 39rem;
+  }
+
+  &__title {
+    color: $color-ink;
+    font-size: clamp(2.85rem, 3.4vw, 3.05rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: 0;
+
+    span {
+      display: block;
+    }
+
+    em {
+      color: rgba($color-ink, 0.18);
+      font-family: $font-serif;
+      font-style: italic;
+      font-weight: 500;
+    }
+  }
+
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: space(lg);
-    margin-top: space(2xl);
+    gap: 1.5rem;
+    margin-top: clamp(3.9rem, 5.2vw, 4.6rem);
+  }
+}
+
+.faq {
+  padding-block: clamp(2rem, 4vw, 3.1rem) clamp(4.5rem, 7vw, 6rem);
+
+  &__intro {
+    max-width: 44rem;
+  }
+
+  &__title {
+    color: $color-ink;
+    font-size: clamp(2.8rem, 3.15vw, 3.05rem);
+    font-weight: 500;
+    line-height: 1.16;
+    letter-spacing: 0;
+
+    span {
+      display: block;
+    }
+
+    em {
+      color: rgba($color-ink, 0.18);
+      font-family: $font-serif;
+      font-style: italic;
+      font-weight: 500;
+    }
   }
 }
 
@@ -444,6 +572,12 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
+
+  .pricing {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 
 @include respond(860px) {
@@ -497,7 +631,6 @@
   }
 
   .work,
-  .pricing,
   .testimonials,
   .awards {
     &__grid {
@@ -506,8 +639,8 @@
   }
 
   .testimonials {
-    .testimonial-card--photo {
-      grid-row: auto;
+    .testimonial-card {
+      grid-column: 1 / -1;
     }
   }
 }
@@ -642,6 +775,30 @@
         width: 100%;
         height: 10rem;
       }
+    }
+  }
+
+  .pricing-card {
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
+
+    &__description {
+      margin-bottom: 2rem;
+    }
+
+    &__details {
+      padding-top: 1.5rem;
+      padding-left: 0;
+      border-top: 1px solid rgba($color-ink, 0.12);
+      border-left: 0;
+    }
+
+    &__features li {
+      white-space: normal;
+    }
+
+    &--pro .pricing-card__details {
+      border-top-color: rgba($color-white, 0.18);
     }
   }
 }

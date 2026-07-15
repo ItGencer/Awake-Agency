@@ -1,4 +1,19 @@
 import './style/main.scss';
+import photoOne from './assets/photo 1.png';
+import photoTwo from './assets/photo 2.jpg';
+import photoThree from './assets/photo 3.png';
+import photoFour from './assets/photo 4.jpg';
+import testimonialHero from './assets/testimonial-hero.jpg';
+import testimonialStory from './assets/testimonial-story.jpg';
+
+const localImages = {
+  'photo-1': photoOne,
+  'photo-2': photoTwo,
+  'photo-3': photoThree,
+  'photo-4': photoFour,
+  'testimonial-hero': testimonialHero,
+  'testimonial-story': testimonialStory,
+};
 
 class AwakeSite {
   constructor() {
@@ -9,22 +24,44 @@ class AwakeSite {
     this.faqButtons = [...document.querySelectorAll('[data-faq-button]')];
     this.yearElements = [...document.querySelectorAll('[data-year]')];
     this.scrollFillElements = [...document.querySelectorAll('[data-scroll-fill]')];
+    this.swapButtons = [...document.querySelectorAll('a.button')];
+    this.localImageElements = [...document.querySelectorAll('[data-local-image]')];
     this.scrollFillFrame = null;
+    this.buttonSwapFrame = null;
   }
 
   init() {
+    this.applyLocalImages();
     this.setCurrentYear();
     this.bindMobileMenu();
     this.bindSmoothScroll();
     this.bindFaq();
     this.observeSections();
     this.bindScrollFill();
+    this.bindButtonSwap();
   }
 
   setCurrentYear() {
     const currentYear = String(new Date().getFullYear());
     this.yearElements.forEach((element) => {
       element.textContent = currentYear;
+    });
+  }
+
+  applyLocalImages() {
+    this.localImageElements.forEach((element) => {
+      const imageKey = element.getAttribute('data-local-image');
+      const imageSrc = imageKey ? localImages[imageKey] : null;
+
+      if (!imageSrc) return;
+
+      if (element instanceof SVGImageElement) {
+        element.setAttribute('href', imageSrc);
+        element.setAttributeNS('http://www.w3.org/1999/xlink', 'href', imageSrc);
+        return;
+      }
+
+      element.setAttribute('src', imageSrc);
     });
   }
 
@@ -67,16 +104,26 @@ class AwakeSite {
 
   bindFaq() {
     this.faqButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const answerId = button.getAttribute('aria-controls');
-        const answer = answerId ? document.getElementById(answerId) : null;
-        if (!answer) return;
+      this.setFaqOpen(button, button.getAttribute('aria-expanded') === 'true');
+    });
 
-        const isOpen = button.getAttribute('aria-expanded') === 'true';
-        button.setAttribute('aria-expanded', String(!isOpen));
-        answer.hidden = isOpen;
+    this.faqButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        this.faqButtons.forEach((faqButton) => {
+          this.setFaqOpen(faqButton, faqButton === button);
+        });
       });
     });
+  }
+
+  setFaqOpen(button, isOpen) {
+    const answerId = button.getAttribute('aria-controls');
+    const answer = answerId ? document.getElementById(answerId) : null;
+    const item = button.closest('.faq__item');
+
+    button.setAttribute('aria-expanded', String(isOpen));
+    answer?.toggleAttribute('hidden', !isOpen);
+    item?.classList.toggle('faq__item--open', isOpen);
   }
 
   observeSections() {
@@ -143,6 +190,54 @@ class AwakeSite {
 
         word.style.color = `rgba(23, 25, 28, ${alpha.toFixed(3)})`;
       });
+    });
+  }
+
+  bindButtonSwap() {
+    if (!this.swapButtons.length) return;
+
+    const queueMeasure = () => {
+      if (this.buttonSwapFrame) return;
+
+      this.buttonSwapFrame = window.requestAnimationFrame(() => {
+        this.buttonSwapFrame = null;
+        this.measureButtonSwap();
+      });
+    };
+
+    this.swapButtons.forEach((button) => {
+      button.addEventListener('pointerenter', () => this.measureButtonSwap(button));
+      button.addEventListener('focus', () => this.measureButtonSwap(button));
+    });
+
+    this.measureButtonSwap();
+    window.addEventListener('resize', queueMeasure);
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(queueMeasure).catch(() => {});
+    }
+  }
+
+  measureButtonSwap(targetButton = null) {
+    const buttons = targetButton ? [targetButton] : this.swapButtons;
+
+    buttons.forEach((button) => {
+      const icon = button.querySelector('.button__icon');
+      const label = [...button.children].find((child) => child !== icon && child.tagName === 'SPAN');
+
+      if (!icon || !label) return;
+
+      const labelLeft = label.offsetLeft;
+      const iconLeft = icon.offsetLeft;
+      const labelWidth = label.offsetWidth;
+      const iconWidth = icon.offsetWidth;
+      const contentLeft = Math.min(labelLeft, iconLeft);
+      const contentRight = Math.max(labelLeft + labelWidth, iconLeft + iconWidth);
+      const labelTargetLeft = contentRight - labelWidth;
+      const iconTargetLeft = contentLeft;
+
+      button.style.setProperty('--button-text-shift', `${labelTargetLeft - labelLeft}px`);
+      button.style.setProperty('--button-icon-shift', `${iconTargetLeft - iconLeft}px`);
     });
   }
 

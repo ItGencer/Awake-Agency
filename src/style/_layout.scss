@@ -1,20 +1,19 @@
-@use 'variables' as *;
-@use 'mixins' as *;
+@use "variables" as *;
+@use "mixins" as *;
 
-.site-header {
+.header {
   position: fixed;
   z-index: 50;
   inset: 0 0 auto;
   pointer-events: none;
-  background: linear-gradient(100deg, #dff2fa 0%, #edf7f7 48%, #fff0d7 100%);
-  box-shadow: 0 1px 0 rgba($color-ink, 0.04);
 
   &__nav {
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    display: flex;
+    justify-content: space-around;
     align-items: center;
     width: min(100% - 3.5rem, 1240px);
+    background: linear-gradient(100deg, #dff2faba 0%, #edf7f7ba 48%, #fff0d7ba 100%);
     min-height: 4.125rem;
     margin-inline: auto;
     pointer-events: auto;
@@ -239,7 +238,7 @@
 }
 
 @include respond(1080px) {
-  .site-header {
+  .header {
     &__nav-link {
       padding-inline: 0.72rem;
     }
@@ -247,7 +246,7 @@
 }
 
 @include respond(960px) {
-  .site-header {
+  .header {
     &__nav {
       grid-template-columns: minmax(0, 1fr) auto;
       width: min(100% - 1rem, 1240px);

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -27,18 +27,18 @@
     <title>Awake Creative Digital Agency | Strategy, Design & Digital Experiences</title>
   </head>
   <body class="page">
-    <header class="site-header" data-header>
-      <nav class="site-header__nav" aria-label="Primary navigation">
-        <a class="site-header__brand" href="#home" data-nav-link aria-label="Awake home">
-          <svg class="site-header__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-            <polygon class="site-header__mark-outer" points="10 1 22 1 31 10 31 22 22 31 10 31 1 22 1 10" />
-            <polygon class="site-header__mark-inner" points="16 8 24 12.5 24 19.5 16 24 8 19.5 8 12.5" />
+    <header class="header" data-header>
+      <nav class="header__nav" aria-label="Primary navigation">
+        <a class="header__brand" href="#home" data-nav-link aria-label="Awake home">
+           <svg class="header__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+            <polygon class="header__mark-outer" points="10 1 22 1 31 10 31 22 22 31 10 31 1 22 1 10" />
+            <polygon class="header__mark-inner" points="16 8 24 12.5 24 19.5 16 24 8 19.5 8 12.5" />
           </svg>
           <span>Awake</span>
         </a>
 
         <button
-          class="site-header__menu"
+          class="header__menu"
           type="button"
           aria-label="Open navigation menu"
           aria-controls="primary-menu"
@@ -49,28 +49,28 @@
           <span></span>
         </button>
 
-        <div class="site-header__panel" id="primary-menu" data-menu>
-          <ul class="site-header__nav-list">
-            <li class="site-header__nav-item">
-              <a class="site-header__nav-link site-header__nav-link--active" href="#home" data-nav-link>Home</a>
+        <div class="header__panel" id="primary-menu" data-menu>
+          <ul class="header__nav-list">
+            <li class="header__nav-item">
+              <a class="header__nav-link site-header__nav-link--active" href="#home" data-nav-link>Home</a>
             </li>
-            <li class="site-header__nav-item">
-              <a class="site-header__nav-link" href="#about" data-nav-link>About us</a>
+            <li class="header__nav-item">
+              <a class="header__nav-link" href="#about" data-nav-link>About us</a>
             </li>
-            <li class="site-header__nav-item">
-              <a class="site-header__nav-link" href="#services" data-nav-link>Services</a>
+            <li class="header__nav-item">
+              <a class="header__nav-link" href="#services" data-nav-link>Services</a>
             </li>
-            <li class="site-header__nav-item">
-              <a class="site-header__nav-link" href="#work" data-nav-link>Work</a>
+            <li class="header__nav-item">
+              <a class="header__nav-link" href="#work" data-nav-link>Work</a>
             </li>
-            <li class="site-header__nav-item">
-              <a class="site-header__nav-link" href="#team" data-nav-link>Team</a>
+            <li class="header__nav-item">
+              <a class="header__nav-link" href="#team" data-nav-link>Team</a>
             </li>
-            <li class="site-header__nav-item">
-              <a class="site-header__nav-link" href="#pricing" data-nav-link>Pricing</a>
+            <li class="header__nav-item">
+              <a class="header__nav-link" href="#pricing" data-nav-link>Pricing</a>
             </li>
-            <li class="site-header__nav-item">
-              <a class="site-header__nav-link" href="#awards" data-nav-link>Awards</a>
+            <li class="header__nav-item">
+              <a class="header__nav-link" href="#awards" data-nav-link>Awards</a>
             </li>
           </ul>
 
@@ -101,19 +101,23 @@
             <div class="hero__trust" aria-label="Trusted by 200 plus clients with five star rating">
               <div class="hero__avatars" aria-hidden="true">
                 <img
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80"
+                  data-local-image="photo-1"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
                   alt=""
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=120&q=80"
+                  data-local-image="photo-2"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
                   alt=""
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80"
+                  data-local-image="photo-3"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
                   alt=""
                 />
                 <img
-                  src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=120&q=80"
+                  data-local-image="photo-4"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
                   alt=""
                 />
               </div>
@@ -317,7 +321,6 @@
 
       <section class="services section section--soft" id="services" aria-labelledby="services-title">
         <div class="section__intro">
-          <p class="section__eyebrow">Services</p>
           <h2 class="section__title" id="services-title">
             Where innovation meets <em>aesthetics</em>
           </h2>
@@ -325,23 +328,50 @@
 
         <div class="services__grid">
           <article class="service-card service-card--lavender">
-            <span class="service-card__icon" aria-hidden="true"></span>
+            <svg class="service-card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path d="M13 9c-4 0-7 3.3-7 7.5v18C6 38.7 9 42 13 42s7-3.3 7-7.5v-18C20 12.3 17 9 13 9Z" />
+              <path d="M23 36 36.5 22.5c3-3 3-7.9 0-10.9s-7.9-3-10.9 0L20 17.2" />
+              <path d="M20 35.5h11c4.2 0 7.5-3 7.5-6.8 0-2.3-1.2-4.4-3.1-5.6" />
+              <path d="M13 34h.01" />
+            </svg>
             <h3 class="service-card__title">Brand Strategy</h3>
           </article>
           <article class="service-card service-card--pink">
-            <span class="service-card__icon" aria-hidden="true"></span>
+            <svg class="service-card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <rect x="8" y="10" width="32" height="32" rx="8" />
+              <path d="M8 20h32" />
+              <path d="M19 20v22" />
+              <path d="M14 15h.01M20 15h.01M26 15h.01" />
+            </svg>
             <h3 class="service-card__title">Web Development</h3>
           </article>
           <article class="service-card service-card--blue">
-            <span class="service-card__icon" aria-hidden="true"></span>
+            <svg class="service-card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path d="M12 16h24l4 8v12a6 6 0 0 1-6 6H14a6 6 0 0 1-6-6V24l4-8Z" />
+              <path d="M15 10h18" />
+              <path d="M13 16h22" />
+              <path d="m13 31 5-5 7 7 4-4 6 6" />
+              <path d="M31 25h.01" />
+            </svg>
             <h3 class="service-card__title">Digital Marketing</h3>
           </article>
           <article class="service-card service-card--peach">
-            <span class="service-card__icon" aria-hidden="true"></span>
+            <svg class="service-card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path d="m10 16 22 22 6-6-22-22a4.2 4.2 0 0 0-6 6Z" />
+              <path d="M30 12h5M32.5 9.5v5" />
+              <path d="M38 20h4M40 18v4" />
+              <path d="M9 33h4M11 31v4" />
+              <path d="m15 21 6-6" />
+            </svg>
             <h3 class="service-card__title">UI/UX Designing</h3>
           </article>
           <article class="service-card service-card--green">
-            <span class="service-card__icon" aria-hidden="true"></span>
+            <svg class="service-card__icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+              <path d="M8 40h32" />
+              <path d="M12 40V24h8v16" />
+              <path d="M20 40V12h8v28" />
+              <path d="M28 40V20h8v20" />
+            </svg>
             <h3 class="service-card__title">Analytics & Reporting</h3>
           </article>
         </div>
@@ -362,10 +392,9 @@
       </section>
 
       <section class="work section" id="work" aria-labelledby="work-title">
-        <div class="section__intro">
-          <p class="section__eyebrow">Selected work</p>
-          <h2 class="section__title" id="work-title">
-            Transforming a small business's <em>online presence</em>
+        <div class="section__intro work__intro">
+          <h2 class="section__title work__title" id="work-title">
+            How we transformed a small business's <em>online presence</em>
           </h2>
         </div>
 
@@ -408,11 +437,17 @@
                 src="https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&w=1000&q=84"
                 alt="Bright laboratory and science brand image for Genome"
               />
+              <span class="work-card__brand" aria-hidden="true">
+                <svg viewBox="0 0 64 48" focusable="false">
+                  <path d="M21.6 6.5H43l12.4 11.7-11.6 11H28.4l9.4-9.2h13L40.1 10H24.9L11.6 23.1l13.3 13.1h15.3l9.6-9.4 5.6 5.5L43 44H21.6L3.9 27V23.5L21.6 6.5Z" />
+                </svg>
+                <span>Genome</span>
+              </span>
             </figure>
             <div class="work-card__body">
               <h3 class="work-card__title">Genome</h3>
               <div class="work-card__tags">
-                <span>Brand Identity Design</span>
+                <span>Brand identity design</span>
                 <span>UX Research</span>
               </div>
             </div>
@@ -428,7 +463,7 @@
             <div class="work-card__body">
               <h3 class="work-card__title">Hotto</h3>
               <div class="work-card__tags">
-                <span>Visual Storytelling</span>
+                <span>Visual Story telling</span>
                 <span>Web & Mobile Design</span>
               </div>
             </div>
@@ -438,7 +473,6 @@
 
       <section class="team section section--soft" id="team" aria-labelledby="team-title">
         <div class="section__intro">
-          <p class="section__eyebrow">Team</p>
           <h2 class="section__title" id="team-title">
             Meet the creative minds behind <em>our success</em>
           </h2>
@@ -447,10 +481,26 @@
         <div class="team__grid">
           <article class="team-card team-card--purple">
             <figure class="team-card__portrait">
-              <img
-                src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=520&q=84"
-                alt="Editorial portrait representing Logan Dang"
-              />
+              <svg class="team-card__portrait-svg" viewBox="0 0 320 390" role="img" aria-label="Editorial portrait representing Logan Dang">
+                <defs>
+                  <clipPath id="team-shape-logan">
+                    <rect x="0" y="0" width="320" height="206" rx="68" />
+                    <rect x="0" y="178" width="320" height="212" rx="68" />
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#team-shape-logan)">
+                  <rect width="320" height="390" fill="currentColor" />
+                  <image
+                    class="team-card__portrait-image"
+                    data-local-image="photo-2"
+                    x="0"
+                    y="0"
+                    width="320"
+                    height="390"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </g>
+              </svg>
             </figure>
             <h3 class="team-card__name">Logan Dang</h3>
             <p class="team-card__role">Wordpress Developer</p>
@@ -462,10 +512,25 @@
 
           <article class="team-card team-card--orange">
             <figure class="team-card__portrait">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=520&q=84"
-                alt="Editorial portrait representing Ana Belic"
-              />
+              <svg class="team-card__portrait-svg" viewBox="0 0 320 390" role="img" aria-label="Editorial portrait representing Ana Belic">
+                <defs>
+                  <clipPath id="team-shape-ana">
+                    <path d="M0 390V154C0 68.9 68.9 0 154 0h12c85.1 0 154 68.9 154 154v236H0Z" />
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#team-shape-ana)">
+                  <rect width="320" height="390" fill="currentColor" />
+                  <image
+                    class="team-card__portrait-image"
+                    data-local-image="photo-1"
+                    x="0"
+                    y="0"
+                    width="320"
+                    height="390"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </g>
+              </svg>
             </figure>
             <h3 class="team-card__name">Ana Beli&#263;</h3>
             <p class="team-card__role">Social Media Specialist</p>
@@ -477,10 +542,25 @@
 
           <article class="team-card team-card--yellow">
             <figure class="team-card__portrait">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=520&q=84"
-                alt="Editorial portrait representing Brian Hanley"
-              />
+              <svg class="team-card__portrait-svg" viewBox="0 0 320 390" role="img" aria-label="Editorial portrait representing Brian Hanley">
+                <defs>
+                  <clipPath id="team-shape-brian">
+                    <rect x="16" y="0" width="288" height="390" rx="144" />
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#team-shape-brian)">
+                  <rect width="320" height="390" fill="currentColor" />
+                  <image
+                    class="team-card__portrait-image"
+                    data-local-image="photo-4"
+                    x="0"
+                    y="0"
+                    width="320"
+                    height="390"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </g>
+              </svg>
             </figure>
             <h3 class="team-card__name">Brian Hanley</h3>
             <p class="team-card__role">Product Designer</p>
@@ -492,10 +572,27 @@
 
           <article class="team-card team-card--cyan">
             <figure class="team-card__portrait">
-              <img
-                src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=520&q=84"
-                alt="Editorial portrait representing Darko Stankovic"
-              />
+              <svg class="team-card__portrait-svg" viewBox="0 0 320 390" role="img" aria-label="Editorial portrait representing Darko Stankovic">
+                <defs>
+                  <clipPath id="team-shape-darko">
+                    <rect x="0" y="0" width="320" height="122" rx="58" />
+                    <rect x="0" y="134" width="320" height="122" rx="58" />
+                    <rect x="0" y="268" width="320" height="122" rx="58" />
+                  </clipPath>
+                </defs>
+                <g clip-path="url(#team-shape-darko)">
+                  <rect width="320" height="390" fill="currentColor" />
+                  <image
+                    class="team-card__portrait-image"
+                    data-local-image="photo-3"
+                    x="0"
+                    y="0"
+                    width="320"
+                    height="390"
+                    preserveAspectRatio="xMidYMid slice"
+                  />
+                </g>
+              </svg>
             </figure>
             <h3 class="team-card__name">Darko Stankovi&#263;</h3>
             <p class="team-card__role">UI Designer</p>
@@ -508,112 +605,139 @@
       </section>
 
       <section class="testimonials section" aria-labelledby="testimonials-title">
-        <div class="section__intro">
-          <p class="section__eyebrow">Testimonials</p>
-          <h2 class="section__title" id="testimonials-title">
-            What our satisfied customers are saying <em>about us</em>
+        <div class="section__intro testimonials__intro">
+          <h2 class="section__title testimonials__title" id="testimonials-title">
+            What our satisfied customers <span>are saying <em>about us</em></span>
           </h2>
         </div>
 
         <div class="testimonials__grid">
           <article class="testimonial-card testimonial-card--photo">
             <img
-              src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=84"
+              data-local-image="testimonial-hero"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
               alt="Customer portrait for testimonial"
             />
+            <span class="testimonial-card__label">Customer Stories</span>
             <div class="testimonial-card__overlay">
               <p>
-                "Awake translated our messy product story into a visual system that felt clear, premium, and ready for
-                scale."
+                Awake's expertise transformed my vision into success with creativity, precision, and a deep
+                understanding of my goals.
               </p>
-              <span>Marina Cole, Founder at Bloomly</span>
+              <span>
+                <strong>Sarah Mitchell</strong>
+                <small>Founder of Chipsland</small>
+              </span>
             </div>
           </article>
 
           <article class="testimonial-card testimonial-card--stat">
-            <strong>91%</strong>
-            <p>of clients recommend Awake for brand systems, launch websites, and creative growth strategy.</p>
+            <span class="testimonial-card__label">Facts & Numbers</span>
+            <div class="testimonial-card__stat-copy">
+              <strong>91%</strong>
+              <p>clients recommend our design services."</p>
+            </div>
           </article>
 
           <article class="testimonial-card testimonial-card--dark">
-            <p>"The team moved quickly, challenged our assumptions, and gave every screen a reason to exist."</p>
+            <span class="testimonial-card__label">Customer Stories</span>
+            <p>Their creativity and attention to detail transformed our brand completely!</p>
             <img
-              src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=700&q=84"
+              data-local-image="testimonial-story"
+              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
               alt="Polished product workspace"
             />
           </article>
 
           <article class="testimonial-card testimonial-card--quote">
-            <p>
-              "Our conversion rate improved after launch because the new site made our positioning obvious in the first
-              scroll."
-            </p>
-            <span>Andre Wall, Head of Growth at PulsePay</span>
+            <span class="testimonial-card__label">Customer Stories</span>
+            <blockquote>
+              "Awake Design Agency brought our ideas to life with exceptional creativity and precision, exceeding
+              expectations."
+            </blockquote>
+            <footer>
+              <strong>Sarah Mitchell</strong>
+              <span>Marketing Head at TalentConnect</span>
+            </footer>
           </article>
         </div>
       </section>
 
-      <section class="pricing section section--soft" id="pricing" aria-labelledby="pricing-title">
-        <div class="section__intro">
-          <p class="section__eyebrow">Pricing</p>
-          <h2 class="section__title" id="pricing-title">
-            Pick the plan that fits your <em>start-up</em>
+      <section class="pricing section" id="pricing" aria-labelledby="pricing-title">
+        <div class="section__intro pricing__intro">
+          <h2 class="section__title pricing__title" id="pricing-title">
+            Pick the plan that fits <span>your <em>start-up</em></span>
           </h2>
         </div>
 
         <div class="pricing__grid">
           <article class="pricing-card pricing-card--starter">
-            <span class="pricing-card__badge">Starter</span>
-            <h3 class="pricing-card__price">$2500<span>/month</span></h3>
-            <a class="button button--light pricing-card__button" href="#contact">
-              <span>Start Starter</span>
-              <span class="button__icon button__icon--dark" aria-hidden="true">&#8599;</span>
-            </a>
-            <ul class="pricing-card__features">
-              <li>Design updates every 2 days</li>
-              <li>Mid-level designer</li>
-              <li>SEO optimization</li>
-              <li>Monthly analytics</li>
-              <li>2 calls/month</li>
-              <li>License-free assets</li>
-            </ul>
+            <div class="pricing-card__summary">
+              <span class="pricing-card__badge">Starter</span>
+              <p class="pricing-card__description">For companies who need design support. One request at a time</p>
+              <h3 class="pricing-card__price">$2500<span>/month</span></h3>
+              <a class="button button--light pricing-card__button" href="#contact">
+                <span>Let's Collaborate</span>
+                <span class="button__icon button__icon--dark" aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+            <div class="pricing-card__details">
+              <h3 class="pricing-card__features-title">Features</h3>
+              <ul class="pricing-card__features">
+                <li>Design Updates Every 2 Days</li>
+                <li>Mid-level Designer</li>
+                <li>SEO optimization</li>
+                <li>Monthly analytics</li>
+                <li>2x Calls Per Month</li>
+                <li>License free assets</li>
+              </ul>
+            </div>
           </article>
 
           <article class="pricing-card pricing-card--pro">
-            <span class="pricing-card__badge">Pro</span>
-            <h3 class="pricing-card__price">$3500<span>/month</span></h3>
-            <a class="button button--light pricing-card__button" href="#contact">
-              <span>Start Pro</span>
-              <span class="button__icon button__icon--dark" aria-hidden="true">&#8599;</span>
-            </a>
-            <ul class="pricing-card__features">
-              <li>Daily design updates</li>
-              <li>Senior-level designer</li>
-              <li>AI advisory framework</li>
-              <li>Full-service creative team</li>
-              <li>4 calls/month</li>
-              <li>License-free assets</li>
-            </ul>
+            <div class="pricing-card__summary">
+              <span class="pricing-card__badge">Pro</span>
+              <p class="pricing-card__description">2x the speed. Great for an MVP, Web App or complex problem</p>
+              <h3 class="pricing-card__price">$3500<span>/month</span></h3>
+              <a class="button button--light pricing-card__button" href="#contact">
+                <span>Let's Collaborate</span>
+                <span class="button__icon button__icon--dark" aria-hidden="true">&#8599;</span>
+              </a>
+            </div>
+            <div class="pricing-card__details">
+              <h3 class="pricing-card__features-title">Features</h3>
+              <ul class="pricing-card__features">
+                <li>Design Updates Daily</li>
+                <li>Senior-level Designer</li>
+                <li>AI Advisory Framework</li>
+                <li>Full-service Creative Team</li>
+                <li>4x Calls Per Month</li>
+                <li>License free assets</li>
+              </ul>
+            </div>
           </article>
         </div>
       </section>
 
       <section class="faq section" aria-labelledby="faq-title">
-        <div class="section__intro">
-          <p class="section__eyebrow">FAQ</p>
-          <h2 class="section__title" id="faq-title">
-            Got questions? We've got <em>answers</em>
+        <div class="section__intro faq__intro">
+          <h2 class="section__title faq__title" id="faq-title">
+            Got questions? <span>We&rsquo;ve got <em>answers</em></span>
           </h2>
         </div>
 
         <div class="faq__list">
-          <article class="faq__item">
+          <article class="faq__item faq__item--open">
             <button class="faq__question" type="button" aria-expanded="true" aria-controls="faq-answer-1" data-faq-button>
               <span>What services does Awake Agency offer?</span>
               <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__answer" id="faq-answer-1" data-faq-answer>
-              <p>Brand strategy, identity systems, web development, digital marketing, UI/UX design, and analytics.</p>
+              <p>
+                Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages<br />
+                for clients needing regular updates<br />
+                or technical assistance.
+              </p>
             </div>
           </article>
 
@@ -623,17 +747,25 @@
               <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__answer" id="faq-answer-2" data-faq-answer hidden>
-              <p>Most launch websites and brand systems run 4 to 8 weeks, depending on scope and feedback speed.</p>
+              <p>
+                Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages<br />
+                for clients needing regular updates<br />
+                or technical assistance.
+              </p>
             </div>
           </article>
 
           <article class="faq__item">
             <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-3" data-faq-button>
-              <span>How is pricing structured?</span>
+              <span>How is pricing structured at Awake Agency?</span>
               <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__answer" id="faq-answer-3" data-faq-answer hidden>
-              <p>Monthly plans are scoped around design velocity, team seniority, strategic support, and meeting cadence.</p>
+              <p>
+                Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages<br />
+                for clients needing regular updates<br />
+                or technical assistance.
+              </p>
             </div>
           </article>
 
@@ -643,7 +775,11 @@
               <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__answer" id="faq-answer-4" data-faq-answer hidden>
-              <p>Yes. Awake can continue with optimization, design updates, campaign assets, and reporting support.</p>
+              <p>
+                Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages<br />
+                for clients needing regular updates<br />
+                or technical assistance.
+              </p>
             </div>
           </article>
 
@@ -653,7 +789,11 @@
               <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__answer" id="faq-answer-5" data-faq-answer hidden>
-              <p>Starter clients receive updates every 2 days. Pro clients receive daily updates and more strategic touchpoints.</p>
+              <p>
+                Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages<br />
+                for clients needing regular updates<br />
+                or technical assistance.
+              </p>
             </div>
           </article>
 
@@ -663,7 +803,11 @@
               <span class="faq__chevron" aria-hidden="true"></span>
             </button>
             <div class="faq__answer" id="faq-answer-6" data-faq-answer hidden>
-              <p>Choose a plan or request a collaboration call so the team can map goals, timelines, and first deliverables.</p>
+              <p>
+                Yes, we provide post-launch support to ensure smooth implementation and offer ongoing maintenance packages<br />
+                for clients needing regular updates<br />
+                or technical assistance.
+              </p>
             </div>
           </article>
         </div>

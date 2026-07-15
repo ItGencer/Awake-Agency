@@ -2,27 +2,39 @@
 @use 'mixins' as *;
 
 .button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: space(xs);
-  min-height: 3rem;
-  padding: 0.8rem 0.95rem 0.8rem 1.25rem;
+  padding: 0.5rem 0.7rem;
   font-weight: 800;
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: $radius-pill;
   transition:
-    transform 180ms ease,
-    background-color 180ms ease,
-    color 180ms ease,
-    border-color 180ms ease;
+    transform 220ms linear,
+    background-color 180ms linear,
+    color 180ms linear,
+    border-color 180ms linear;
 
-  &:hover {
+  > span {
+    transition: transform 260ms linear;
+    will-change: transform;
+  }
+
+  > span:not(.button__icon) {
+    transform: translateX(0);
+  }
+
+  &:is(:hover, :focus-visible) {
     transform: translateY(-3px);
 
+    > span:not(.button__icon) {
+      transform: translateX(var(--button-text-shift, 0));
+    }
+
     .button__icon {
-      transform: translate(2px, -2px) rotate(14deg);
+      transform: translateX(var(--button-icon-shift, 0)) rotate(14deg);
     }
   }
 
@@ -35,7 +47,7 @@
     color: $color-ink;
     background: $color-white;
     border-radius: 50%;
-    transition: transform 180ms ease;
+    transition: transform 260ms linear;
 
     &--dark {
       color: $color-white;
@@ -46,6 +58,7 @@
   &--dark {
     color: $color-white;
     background: $color-ink;
+    width: 220px;
   }
 
   &--purple {
@@ -93,8 +106,8 @@
   &__title {
     margin: 0;
     color: $color-ink;
-    font-size: clamp(2.3rem, 6vw, 5rem);
-    font-weight: 800;
+    font-size: clamp(2.3rem, 4vw, 5rem);
+    font-weight: 500;
     line-height: 0.98;
   }
 }
@@ -104,118 +117,178 @@
 
   display: grid;
   align-content: space-between;
-  min-height: 13rem;
-  padding: space(lg);
-  border: 1px solid rgba($color-ink, 0.06);
+  min-height: 11.5rem;
+  padding: 2rem;
+  border: 1px solid rgba($color-ink, 0.035);
   border-radius: $radius-card;
+  box-shadow: 0 18px 36px rgba($color-ink, 0.08);
 
   &--lavender {
+    color: #b36cff;
     background: $color-lavender;
   }
 
   &--pink {
+    color: #ff6d81;
     background: $color-pink;
   }
 
   &--blue {
+    color: #5ba8ff;
     background: $color-blue;
   }
 
   &--peach {
+    color: #ff9f55;
     background: $color-peach;
   }
 
   &--green {
+    color: #68d852;
     background: $color-green;
   }
 
   &__icon {
-    position: relative;
-    display: inline-block;
-    width: 3.2rem;
-    height: 3.2rem;
-    border: 1.5px solid rgba($color-ink, 0.74);
-    border-radius: 50%;
-
-    &::before,
-    &::after {
-      position: absolute;
-      content: '';
-      background: $color-ink;
-    }
-
-    &::before {
-      top: 50%;
-      left: 0.72rem;
-      width: 1.65rem;
-      height: 1.5px;
-      transform: translateY(-50%);
-    }
-
-    &::after {
-      top: 0.72rem;
-      left: 50%;
-      width: 1.5px;
-      height: 1.65rem;
-      transform: translateX(-50%);
-    }
+    width: 2.45rem;
+    height: 2.45rem;
+    color: currentColor;
+    fill: none;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2;
   }
 
   &__title {
-    max-width: 9rem;
-    margin: space(2xl) 0 0;
-    font-size: 1.25rem;
+    max-width: 9.6rem;
+    margin: 2rem 0 0;
+    color: $color-ink;
+    font-size: 1.38rem;
+    font-weight: 500;
     line-height: 1.08;
   }
 }
 
 .work-card {
-  @include lift-hover;
+  position: relative;
+  z-index: var(--work-card-layer, 1);
+  min-width: 0;
+  align-self: start;
+
+  &:nth-child(1) {
+    --work-card-layer: 1;
+  }
+
+  &:nth-child(2) {
+    --work-card-layer: 2;
+  }
+
+  &:nth-child(3) {
+    --work-card-layer: 3;
+  }
+
+  &:nth-child(4) {
+    --work-card-layer: 4;
+  }
 
   &__media {
+    position: relative;
     margin: 0;
     overflow: hidden;
-    aspect-ratio: 1.22 / 1;
+    aspect-ratio: 1.52 / 1;
     background: $color-surface;
-    border-radius: $radius-card;
+    border-radius: 0.8rem;
+    box-shadow: 0 1.1rem 2.8rem rgba($color-ink, 0.07);
 
     img {
+      display: block;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 420ms ease;
+      transition: transform 420ms linear;
     }
   }
 
   &:hover img {
-    transform: scale(1.045);
+    transform: scale(1.025);
+  }
+
+  &:nth-child(1) img {
+    object-position: center bottom;
+  }
+
+  &:nth-child(2) img {
+    object-position: center;
+  }
+
+  &:nth-child(3) {
+    .work-card__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba($color-ink, 0.24);
+    }
+
+    img {
+      object-position: center;
+    }
+  }
+
+  &:nth-child(4) img {
+    object-position: center;
+  }
+
+  &__brand {
+    position: absolute;
+    inset: 50% auto auto 18%;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: $color-white;
+    font-size: clamp(2.3rem, 4.4vw, 4.6rem);
+    font-weight: 800;
+    line-height: 1;
+    transform: translateY(-50%);
+
+    svg {
+      width: 1.15em;
+      height: 0.86em;
+      fill: currentColor;
+    }
   }
 
   &__body {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: space(md);
-    margin-top: space(md);
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.15rem;
   }
 
   &__title {
     margin: 0;
-    font-size: clamp(1.35rem, 2vw, 1.8rem);
+    color: $color-ink;
+    font-size: clamp(1.45rem, 1.8vw, 1.7rem);
+    font-weight: 500;
+    line-height: 1.05;
   }
 
   &__tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
-    gap: space(xs);
+    justify-content: flex-start;
+    gap: 0.7rem;
 
     span {
-      padding: 0.45rem 0.7rem;
-      color: $color-muted-strong;
-      font-size: 0.8rem;
-      font-weight: 700;
-      border: 1px solid $color-border;
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.42rem 0.92rem;
+      color: $color-ink;
+      font-size: 0.9rem;
+      font-weight: 500;
+      line-height: 1;
+      background: $color-white;
+      border: 1px solid rgba($color-ink, 0.12);
       border-radius: $radius-pill;
     }
   }
@@ -225,30 +298,40 @@
   text-align: center;
 
   &__portrait {
-    display: grid;
-    place-items: end center;
-    overflow: hidden;
-    aspect-ratio: 1 / 1.08;
-    margin: 0;
-    border-radius: 46% 54% 46% 54% / 58% 46% 54% 42%;
-    background: var(--team-bg);
+    width: min(100%, 19.7rem);
+    aspect-ratio: 320 / 390;
+    margin: 0 auto;
+    color: var(--team-bg);
+  }
 
-    img {
-      width: 84%;
-      height: 92%;
-      object-fit: cover;
-      object-position: top;
-      filter: saturate(0.98);
-      mix-blend-mode: multiply;
+  &__portrait-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  &__portrait-image {
+    filter: grayscale(0);
+    transition:
+      filter 240ms linear,
+      transform 320ms linear;
+    transform-origin: center;
+  }
+
+  &:hover {
+    .team-card__portrait-image {
+      filter: grayscale(1);
+      transform: scale(1.03);
     }
   }
 
   &--purple {
-    --team-bg: #b6a4ff;
+    --team-bg: #512bff;
   }
 
   &--orange {
-    --team-bg: #ffc36a;
+    --team-bg: #ffb268;
   }
 
   &--yellow {
@@ -256,41 +339,62 @@
   }
 
   &--cyan {
-    --team-bg: #9fe8f2;
+    --team-bg: #35bde9;
   }
 
   &__name {
-    margin: space(md) 0 0;
-    font-size: 1.2rem;
+    margin: 1.35rem 0 0;
+    color: $color-ink;
+    font-size: clamp(1.25rem, 1.7vw, 1.55rem);
+    font-weight: 500;
+    line-height: 1.1;
   }
 
   &__role {
-    margin: 0.25rem 0 space(sm);
+    margin: 0.35rem 0 1.2rem;
     color: $color-muted;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
   }
 
   &__socials {
     display: flex;
     justify-content: center;
-    gap: space(xs);
+    gap: 0.85rem;
 
     a {
       display: inline-grid;
       place-items: center;
-      width: 2.15rem;
-      height: 2.15rem;
-      color: $color-ink;
-      font-size: 0.76rem;
+      width: 1.35rem;
+      height: 1.35rem;
+      color: rgba($color-ink, 0.42);
+      font-size: 1.1rem;
       font-weight: 800;
+      line-height: 1;
       text-decoration: none;
-      background: $color-white;
-      border: 1px solid $color-border;
-      border-radius: 50%;
-      transition: transform 180ms ease;
+      background: transparent;
+      border: 0;
+      border-radius: 0.24rem;
+      transition:
+        color 180ms linear,
+        transform 180ms linear;
+
+      &[aria-label*='LinkedIn'] {
+        width: 1.08rem;
+        height: 1.08rem;
+        align-self: center;
+        color: $color-white;
+        font-size: 0.72rem;
+        background: rgba($color-ink, 0.42);
+      }
 
       &:hover {
+        color: $color-ink;
         transform: translateY(-3px);
+
+        &[aria-label*='LinkedIn'] {
+          color: $color-white;
+          background: $color-ink;
+        }
       }
     }
   }
@@ -300,13 +404,35 @@
   position: relative;
   overflow: hidden;
   min-height: 17rem;
-  padding: space(xl);
-  border-radius: $radius-card;
+  padding: 1.65rem;
+  border-radius: 0.7rem;
+
+  &__label {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    color: rgba($color-ink, 0.45);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
 
   &--photo {
-    min-height: 32rem;
+    display: grid;
+    align-content: space-between;
+    min-height: 25.4rem;
     color: $color-white;
     background: $color-ink;
+
+    &::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background:
+        linear-gradient(180deg, rgba($color-ink, 0.24), transparent 34%),
+        linear-gradient(0deg, rgba($color-ink, 0.76), rgba($color-ink, 0.12) 58%);
+    }
 
     img {
       position: absolute;
@@ -314,24 +440,40 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.62;
+      opacity: 0.78;
+    }
+
+    .testimonial-card__label {
+      color: rgba($color-white, 0.58);
     }
   }
 
   &__overlay {
-    position: absolute;
-    inset: auto space(xl) space(xl);
+    position: relative;
     z-index: 1;
+    align-self: end;
 
     p {
-      max-width: 28rem;
-      margin: 0 0 space(md);
-      font-size: clamp(1.45rem, 3vw, 2.45rem);
-      font-weight: 700;
-      line-height: 1.08;
+      max-width: 39rem;
+      margin: 0 0 1.4rem;
+      color: $color-white;
+      font-size: clamp(1.15rem, 1.55vw, 1.32rem);
+      font-weight: 800;
+      line-height: 1.16;
     }
 
     span {
+      display: grid;
+      gap: 0.18rem;
+      color: $color-white;
+      font-size: 0.76rem;
+      font-weight: 800;
+      line-height: 1.08;
+    }
+
+    small {
+      color: rgba($color-white, 0.75);
+      font-size: 0.72rem;
       font-weight: 700;
     }
   }
@@ -339,66 +481,95 @@
   &--stat {
     display: grid;
     align-content: space-between;
-    background: $color-yellow;
+    min-height: 25.4rem;
+    background: #f5e77d;
 
     strong {
-      font-size: clamp(4rem, 8vw, 6.8rem);
+      display: block;
+      margin: 0 0 0.8rem;
+      color: $color-ink;
+      font-size: clamp(2.8rem, 4.6vw, 3.4rem);
+      font-weight: 500;
       line-height: 0.9;
     }
 
     p {
-      max-width: 22rem;
+      max-width: 14rem;
       margin: 0;
-      color: rgba($color-ink, 0.74);
+      color: $color-ink;
+      font-size: clamp(1.15rem, 1.7vw, 1.38rem);
       font-weight: 700;
+      line-height: 1.12;
     }
   }
 
   &--dark {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 8rem;
-    align-items: end;
-    gap: space(md);
+    align-content: space-between;
+    gap: 1.9rem;
+    min-height: 27.6rem;
     color: $color-white;
     background: $color-ink;
 
+    .testimonial-card__label {
+      color: rgba($color-white, 0.58);
+    }
+
     p {
       margin: 0;
-      font-size: 1.35rem;
-      font-weight: 700;
-      line-height: 1.15;
+      color: $color-white;
+      font-size: clamp(1.25rem, 2vw, 1.55rem);
+      font-weight: 800;
+      line-height: 1.12;
     }
 
     img {
-      width: 8rem;
-      aspect-ratio: 1;
+      width: 100%;
+      aspect-ratio: 1.56 / 1;
       object-fit: cover;
-      border-radius: $radius-card;
+      border-radius: 0.35rem;
     }
   }
 
   &--quote {
     display: grid;
-    align-content: center;
-    background: $color-surface;
+    align-content: space-between;
+    min-height: 27.6rem;
+    background: #f3f3f3;
 
-    p {
-      margin: 0 0 space(lg);
-      font-size: clamp(1.65rem, 3vw, 3rem);
-      font-weight: 800;
-      line-height: 1.05;
+    blockquote {
+      max-width: 40rem;
+      margin: 2.75rem 0 0;
+      color: $color-ink;
+      font-size: clamp(1.3rem, 1.95vw, 1.62rem);
+      font-weight: 500;
+      line-height: 1.15;
     }
 
-    span {
+    footer {
+      display: grid;
+      gap: 0.25rem;
+      color: $color-ink;
+      font-size: 0.82rem;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 1.1;
+    }
+
+    footer span {
       color: $color-muted;
-      font-weight: 700;
+      font-weight: 500;
     }
   }
 }
 
 .pricing-card {
-  padding: clamp(1.5rem, 4vw, 2.5rem);
-  border-radius: $radius-card;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1fr);
+  gap: 1.55rem;
+  min-height: 20.4rem;
+  padding: 2.5rem;
+  border-radius: 0.85rem;
 
   &--starter {
     background: $color-yellow;
@@ -406,58 +577,122 @@
 
   &--pro {
     color: $color-white;
-    background:
-      radial-gradient(circle at 82% 16%, rgba($color-white, 0.22), transparent 32%),
-      $color-purple;
+    background: $color-purple;
   }
 
   &__badge {
     display: inline-flex;
-    padding: 0.48rem 0.78rem;
-    font-weight: 800;
-    background: rgba($color-white, 0.68);
+    width: fit-content;
+    align-items: center;
+    min-height: 2.2rem;
+    padding: 0.4rem 0.95rem;
+    color: $color-white;
+    font-size: 0.98rem;
+    font-weight: 500;
+    line-height: 1;
+    background: $color-ink;
     border-radius: $radius-pill;
   }
 
-  &--pro &__badge {
-    color: $color-purple;
-    background: $color-white;
+  &__summary {
+    display: grid;
+    align-content: start;
+    min-width: 0;
+  }
+
+  &__description {
+    max-width: 17rem;
+    margin: 1rem 0 3.35rem;
+    color: rgba($color-ink, 0.62);
+    font-size: 0.88rem;
+    font-weight: 500;
+    line-height: 1.38;
+  }
+
+  &--pro &__description {
+    color: rgba($color-white, 0.72);
   }
 
   &__price {
-    margin: space(xl) 0 space(lg);
-    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    margin: 0 0 1.38rem;
+    color: currentColor;
+    font-size: clamp(2.6rem, 4vw, 3.2rem);
+    font-weight: 500;
     line-height: 0.94;
 
     span {
-      display: block;
-      margin-top: space(xs);
-      font-size: 1rem;
-      font-weight: 700;
-      opacity: 0.72;
+      display: inline;
+      margin-left: 0.08rem;
+      color: rgba($color-ink, 0.58);
+      font-size: 0.98rem;
+      font-weight: 500;
+      line-height: 1;
     }
   }
 
+  &--pro &__price span {
+    color: rgba($color-white, 0.7);
+  }
+
   &__button {
-    margin-bottom: space(xl);
+    justify-content: space-between;
+    width: min(100%, 12.3rem);
+    min-height: 3.05rem;
+    padding: 0.42rem 0.42rem 0.42rem 1.25rem;
+    font-weight: 500;
+
+    .button__icon {
+      width: 2.15rem;
+      height: 2.15rem;
+      font-size: 0.95rem;
+    }
+
+    > span:not(.button__icon) {
+      white-space: nowrap;
+    }
+  }
+
+  &__details {
+    min-width: 0;
+    padding-left: 1.25rem;
+    border-left: 1px solid rgba($color-ink, 0.12);
+  }
+
+  &--pro &__details {
+    border-left-color: rgba($color-white, 0.18);
+  }
+
+  &__features-title {
+    margin: 0 0 1.12rem;
+    color: currentColor;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.1;
   }
 
   &__features {
     display: grid;
-    gap: space(sm);
+    gap: 1rem;
     margin: 0;
     padding: 0;
     list-style: none;
 
     li {
       position: relative;
-      padding-left: 1.8rem;
-      font-weight: 700;
+      padding-left: 1.6rem;
+      color: currentColor;
+      font-size: 0.98rem;
+      font-weight: 500;
+      line-height: 1.25;
+      white-space: nowrap;
 
       &::before {
         position: absolute;
         left: 0;
+        top: 0;
         content: '\2713';
+        font-size: 0.92rem;
+        font-weight: 500;
       }
     }
   }
@@ -466,39 +701,55 @@
 .faq {
   &__list {
     display: grid;
-    gap: space(sm);
-    max-width: 880px;
-    margin: space(2xl) auto 0;
+    gap: 1rem;
+    max-width: 925px;
+    margin: clamp(4.8rem, 7vw, 5.6rem) auto 0;
   }
 
   &__item {
     background: $color-white;
-    border: 1px solid $color-border;
-    border-radius: $radius-card;
+    border: 1px solid rgba($color-ink, 0.12);
+    border-radius: 0.9rem;
+    transition:
+      background-color 180ms linear,
+      border-color 180ms linear;
+  }
+
+  &__item--open {
+    background: #f3f3f4;
+    border-color: rgba($color-ink, 0.14);
   }
 
   &__question {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: space(md);
+    gap: 1.5rem;
     width: 100%;
-    padding: 1.25rem 1.4rem;
+    min-height: 5.1rem;
+    padding: 1.35rem 1.5rem;
     color: $color-ink;
-    font-weight: 800;
+    font-size: clamp(1.25rem, 1.7vw, 1.52rem);
+    font-weight: 500;
+    line-height: 1.1;
     text-align: left;
     background: transparent;
     border: 0;
+
+    > span:first-child {
+      min-width: 0;
+    }
   }
 
   &__chevron {
     flex: 0 0 auto;
-    width: 0.72rem;
-    height: 0.72rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    margin-right: 0.1rem;
     border-right: 2px solid $color-ink;
     border-bottom: 2px solid $color-ink;
     transform: rotate(45deg);
-    transition: transform 180ms ease;
+    transition: transform 180ms linear;
   }
 
   &__question[aria-expanded='true'] &__chevron {
@@ -506,12 +757,15 @@
   }
 
   &__answer {
-    padding: 0 1.4rem 1.3rem;
+    padding: 0 1.5rem 2rem;
     color: $color-muted;
 
     p {
-      max-width: 46rem;
+      max-width: 54rem;
       margin: 0;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.28;
     }
   }
 }
