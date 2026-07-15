@@ -52,7 +52,7 @@
         <div class="header__panel" id="primary-menu" data-menu>
           <ul class="header__nav-list">
             <li class="header__nav-item">
-              <a class="header__nav-link site-header__nav-link--active" href="#home" data-nav-link>Home</a>
+              <a class="header__nav-link header__nav-link--active" href="#home" data-nav-link>Home</a>
             </li>
             <li class="header__nav-item">
               <a class="header__nav-link" href="#about" data-nav-link>About us</a>
@@ -74,7 +74,7 @@
             </li>
           </ul>
 
-          <a class="button button--dark site-header__cta" href="#contact" data-nav-link>
+          <a class="button button--dark header__cta" href="#contact" data-nav-link>
             <span>Let's Collaborate</span>
             <span class="button__icon" aria-hidden="true">&#8599;</span>
           </a>
@@ -258,19 +258,7 @@
       <section class="about section" id="about" aria-labelledby="about-title">
         <div class="section__intro about__intro">
           <h2 class="section__title about__title" id="about-title" data-scroll-fill>
-            <span data-scroll-fill-word>Crafting</span>
-            <span data-scroll-fill-word>exceptional,</span>
-            <span data-scroll-fill-word>well</span>
-            <span data-scroll-fill-word>experienced</span>
-            <span data-scroll-fill-word>&amp;</span>
-            <span data-scroll-fill-word>technology</span>
-            <span data-scroll-fill-word>driven</span>
-            <span data-scroll-fill-word>strategies</span>
-            <span data-scroll-fill-word>to</span>
-            <span data-scroll-fill-word>drive</span>
-            <span data-scroll-fill-word>impactful</span>
-            <span data-scroll-fill-word>results</span>
-            <span data-scroll-fill-word>with</span>
+            Crafting exceptional, well experienced &amp; technology driven strategies to drive impactful results with
           </h2>
           <div class="about__tags" aria-label="Agency strengths">
             <span class="about__tag about__tag--lavender">
@@ -321,7 +309,7 @@
 
       <section class="services section section--soft" id="services" aria-labelledby="services-title">
         <div class="section__intro">
-          <h2 class="section__title" id="services-title">
+          <h2 class="section__title" id="services-title" data-scroll-fill>
             Where innovation meets <em>aesthetics</em>
           </h2>
         </div>
@@ -393,7 +381,7 @@
 
       <section class="work section" id="work" aria-labelledby="work-title">
         <div class="section__intro work__intro">
-          <h2 class="section__title work__title" id="work-title">
+          <h2 class="section__title work__title" id="work-title" data-scroll-fill>
             How we transformed a small business's <em>online presence</em>
           </h2>
         </div>
@@ -473,7 +461,7 @@
 
       <section class="team section section--soft" id="team" aria-labelledby="team-title">
         <div class="section__intro">
-          <h2 class="section__title" id="team-title">
+          <h2 class="section__title" id="team-title" data-scroll-fill>
             Meet the creative minds behind <em>our success</em>
           </h2>
         </div>
@@ -606,8 +594,8 @@
 
       <section class="testimonials section" aria-labelledby="testimonials-title">
         <div class="section__intro testimonials__intro">
-          <h2 class="section__title testimonials__title" id="testimonials-title">
-            What our satisfied customers <span>are saying <em>about us</em></span>
+          <h2 class="section__title testimonials__title" id="testimonials-title" data-scroll-fill>
+            What our satisfied customers are saying <em>about us</em>
           </h2>
         </div>
 
@@ -665,8 +653,8 @@
 
       <section class="pricing section" id="pricing" aria-labelledby="pricing-title">
         <div class="section__intro pricing__intro">
-          <h2 class="section__title pricing__title" id="pricing-title">
-            Pick the plan that fits <span>your <em>start-up</em></span>
+          <h2 class="section__title pricing__title" id="pricing-title" data-scroll-fill>
+            Pick the plan that fits your <em>start-up</em>
           </h2>
         </div>
 
@@ -721,8 +709,8 @@
 
       <section class="faq section" aria-labelledby="faq-title">
         <div class="section__intro faq__intro">
-          <h2 class="section__title faq__title" id="faq-title">
-            Got questions? <span>We&rsquo;ve got <em>answers</em></span>
+          <h2 class="section__title faq__title" id="faq-title" data-scroll-fill>
+            Got questions? We&rsquo;ve got <em>answers</em>
           </h2>
         </div>
 
@@ -814,30 +802,53 @@
       </section>
 
       <section class="awards section section--soft" id="awards" aria-labelledby="awards-title">
-        <div class="section__intro">
-          <p class="section__eyebrow">Awards</p>
-          <h2 class="section__title" id="awards-title">
-            Accolades, achievements, and design excellence recognized by creative platforms.
+        <div class="section__intro awards__intro">
+          <h2 class="section__title awards__title" id="awards-title" data-scroll-fill>
+            Accolades and achievements celebration <em>our design excellence</em>
           </h2>
         </div>
 
         <div class="awards__grid">
           <article class="award-card">
-            <span class="award-card__icon" aria-hidden="true">W</span>
-            <p class="award-card__name">Webflow Awards</p>
-            <h3 class="award-card__title">Recognized for interaction design and user experience.</h3>
+            <span class="award-card__icon award-card__icon--webflow" aria-hidden="true">
+              <svg viewBox="0 0 64 40" focusable="false">
+                <path d="M41.9 8h8.4L39.6 32H31l4.5-9.9h-.2C31.6 28.4 26 32 18.5 32H16l8.9-19.9h8.5l-4.8 11c2.8-.1 5.5-2.2 7.2-6L41.9 8Z" />
+                <path d="M10 12.1h8.2L14.6 20c2.5-.2 4.7-2.1 6.1-5.2l1.2-2.7h8.2L20.8 32h-8.4l3.6-8.1h-.2C13.1 28.7 8.8 31.6 3 32l7-19.9Z" />
+              </svg>
+            </span>
+            <div class="award-card__body">
+              <p class="award-card__name">Webflow Awards</p>
+              <h3 class="award-card__title">Celebrated for cutting-edge interaction design and seamless user experiences.</h3>
+            </div>
             <time class="award-card__year" datetime="2025">2025</time>
           </article>
           <article class="award-card">
-            <span class="award-card__icon" aria-hidden="true">D</span>
-            <p class="award-card__name">Dribbble Awards</p>
-            <h3 class="award-card__title">Honored for creative excellence across digital systems.</h3>
+            <span class="award-card__icon award-card__icon--dribbble" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <circle cx="24" cy="24" r="18" />
+                <path d="M9.2 22.8c9.6.1 18.4-2.5 26.4-7.8" />
+                <path d="M16 9.4c5.5 6.8 9.2 16.2 11.2 28.2" />
+                <path d="M13.8 35.6c5.2-8.8 13-13.5 23.4-14.1" />
+                <path d="M30.7 37.8c2.2-6.4 5-10.9 8.5-13.5" />
+              </svg>
+            </span>
+            <div class="award-card__body">
+              <p class="award-card__name">Dribbble Awards</p>
+              <h3 class="award-card__title">Recognized for creative excellence and innovative design solutions</h3>
+            </div>
             <time class="award-card__year" datetime="2024">2024</time>
           </article>
           <article class="award-card">
-            <span class="award-card__icon" aria-hidden="true">A</span>
-            <p class="award-card__name">Awwwards Awards</p>
-            <h3 class="award-card__title">Selected for website design, usability, and innovation.</h3>
+            <span class="award-card__icon award-card__icon--awwwards" aria-hidden="true">
+              <svg viewBox="0 0 48 48" focusable="false">
+                <path d="M19.4 13.8 8.8 24.4l8.1 8.1 10.6-10.6-3.9-3.9-6.7 6.7-2.3-2.3 6.7-6.7-1.9-1.9Z" />
+                <path d="M28.6 34.2 39.2 23.6l-8.1-8.1-10.6 10.6 3.9 3.9 6.7-6.7 2.3 2.3-6.7 6.7 1.9 1.9Z" />
+              </svg>
+            </span>
+            <div class="award-card__body">
+              <p class="award-card__name">awwwards Awards</p>
+              <h3 class="award-card__title">Honored with the Best Website Design for creativity, usability, and innovation.</h3>
+            </div>
             <time class="award-card__year" datetime="2023">2023</time>
           </article>
         </div>
@@ -845,14 +856,14 @@
 
       <section class="final-cta" id="contact" aria-labelledby="contact-title">
         <div class="final-cta__inner">
-          <h2 class="final-cta__title" id="contact-title">
+          <h2 class="final-cta__title" id="contact-title" data-scroll-fill>
             Innovative Solutions for <em>bold brands</em>
           </h2>
           <p class="final-cta__text">
-            Bring Awake into your next launch, redesign, or growth sprint and turn focused strategy into a polished digital
-            presence.
+            Looking to elevate your brand? We craft immersive experiences that captivate, engage, and
+            make your business unforgettable in every interaction.
           </p>
-          <a class="button button--dark" href="mailto:hello@awake.agency">
+          <a class="button button--dark final-cta__button" href="mailto:hello@awake.agency">
             <span>Let's craft together</span>
             <span class="button__icon" aria-hidden="true">&#8599;</span>
           </a>
@@ -864,17 +875,38 @@
       <div class="site-footer__grid">
         <div class="site-footer__brand">
           <a class="site-footer__logo" href="#home" aria-label="Awake home">
-            <svg class="site-header__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-              <polygon class="site-header__mark-outer" points="10 1 22 1 31 10 31 22 22 31 10 31 1 22 1 10" />
-              <polygon class="site-header__mark-inner" points="16 8 24 12.5 24 19.5 16 24 8 19.5 8 12.5" />
+            <svg class="site-footer__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+              <polygon class="site-footer__mark-outer" points="10 1 22 1 31 10 31 22 22 31 10 31 1 22 1 10" />
+              <polygon class="site-footer__mark-inner" points="16 8 24 12.5 24 19.5 16 24 8 19.5 8 12.5" />
             </svg>
             <span>Awake</span>
           </a>
-          <p>Premium strategy, design, and digital experience work for ambitious brands.</p>
+          <p>Empowering businesses with innovative solutions. Let's create something amazing together.</p>
           <div class="site-footer__socials" aria-label="Social links">
-            <a href="#" aria-label="Awake on X">X</a>
-            <a href="#" aria-label="Awake on LinkedIn">in</a>
-            <a href="#" aria-label="Awake on Dribbble">Db</a>
+            <a href="#" aria-label="Awake on X">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M5 5l14 14M19 5L5 19" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Awake on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M7 10v8M7 7.2v.1M11 18v-8M11 13.5c0-2 1.1-3.6 3.2-3.6 2 0 3.1 1.3 3.1 3.7V18" />
+                <rect x="4" y="4" width="16" height="16" rx="1.8" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Awake on Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="4" y="4" width="16" height="16" rx="4" />
+                <circle cx="12" cy="12" r="3.4" />
+                <path d="M16.8 7.2h.1" />
+              </svg>
+            </a>
+            <a href="#" aria-label="Awake on Dribbble">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="8" />
+                <path d="M5.6 8.2c3.8 1.7 7.7 1.7 12.8.1M8.1 18.3c1.1-4.7 4.3-8.4 9.5-10.9M7 6.8c3.4 3.1 5.7 7.1 6.9 12" />
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -894,14 +926,14 @@
 
         <address class="site-footer__column site-footer__contact">
           <h2>Contact Details</h2>
-          <span>128 Mercer Street, New York, NY</span>
+          <span>81 Rivington Street London<br />EC2A 3AY</span>
           <a href="mailto:hello@awake.agency">hello@awake.agency</a>
-          <a href="tel:+12125550148">+1 212 555 0148</a>
+          <a href="tel:01051923556">0105 192 3556</a>
         </address>
       </div>
 
       <div class="site-footer__bottom">
-        <p>&copy; <span data-year></span> Awake Agency. All rights reserved.</p>
+        <p>&copy;2025 Awake. All Rights Reserved. Powered by Webflow</p>
         <div>
           <a href="#">Style Guide</a>
           <a href="#">Licenses</a>

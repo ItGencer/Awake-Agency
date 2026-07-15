@@ -130,73 +130,109 @@
 }
 
 .site-footer {
-  @include container;
+  width: min(100% - 3rem, 1232px);
+  margin-inline: auto;
 
-  padding-block: space(4xl) space(xl);
+  padding-block: clamp(5.5rem, 8.5vw, 7.75rem) 1.45rem;
 
   &__grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
-    gap: clamp(2rem, 5vw, 4rem);
-    padding-bottom: space(2xl);
+    grid-template-columns:
+      minmax(22rem, 1.72fr)
+      minmax(8.5rem, 0.72fr)
+      minmax(9.5rem, 0.74fr)
+      minmax(13.5rem, 0.92fr);
+    column-gap: clamp(3rem, 6vw, 7.3rem);
+    padding-bottom: 4.75rem;
     border-bottom: 1px solid $color-border;
   }
 
   &__brand {
     p {
-      max-width: 20rem;
-      margin: space(md) 0 space(lg);
+      max-width: 29.5rem;
+      margin: 1.5rem 0 1.6rem;
       color: $color-muted;
+      font-size: 1rem;
+      line-height: 1.42;
     }
   }
 
   &__logo {
     display: inline-flex;
     align-items: center;
-    gap: space(xs);
+    gap: 0.75rem;
     color: $color-ink;
-    font-size: 1.1rem;
+    font-size: 1.45rem;
     font-weight: 800;
+    line-height: 1;
     text-decoration: none;
+  }
+
+  &__mark {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  &__mark-outer {
+    fill: $color-ink;
+  }
+
+  &__mark-inner {
+    fill: $color-white;
   }
 
   &__socials {
     display: flex;
-    gap: space(xs);
+    align-items: center;
+    gap: 0.9rem;
 
     a {
       display: inline-grid;
       place-items: center;
-      width: 2.35rem;
-      height: 2.35rem;
-      color: $color-ink;
-      font-size: 0.78rem;
-      font-weight: 800;
+      width: 1.2rem;
+      height: 1.2rem;
+      color: $color-muted;
       text-decoration: none;
-      background: $color-surface;
-      border: 1px solid $color-border;
-      border-radius: 50%;
-      transition: transform 180ms ease;
+      transition:
+        color 180ms ease,
+        transform 180ms ease;
 
       &:hover {
+        color: $color-ink;
         transform: translateY(-3px);
       }
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.15;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
   }
 
   &__column {
     display: flex;
     flex-direction: column;
-    gap: space(sm);
+    gap: 1rem;
     color: $color-muted;
+    font-size: 1rem;
     font-style: normal;
+    line-height: 1.35;
 
     h2 {
-      margin: 0 0 space(xs);
+      margin: 0 0 0.12rem;
       color: $color-ink;
-      font-size: 0.95rem;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.2;
     }
 
+    span,
     a {
       color: $color-muted;
       text-decoration: none;
@@ -211,10 +247,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: space(lg);
-    padding-top: space(lg);
+    gap: 2rem;
+    padding-top: 1.05rem;
     color: $color-muted;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    line-height: 1.35;
 
     p {
       margin: 0;
@@ -223,7 +260,7 @@
     div {
       display: flex;
       flex-wrap: wrap;
-      gap: space(md);
+      gap: 1.65rem;
     }
 
     a {
@@ -241,6 +278,13 @@
   .header {
     &__nav-link {
       padding-inline: 0.72rem;
+    }
+  }
+
+  .site-footer {
+    &__grid {
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      row-gap: 3rem;
     }
   }
 }

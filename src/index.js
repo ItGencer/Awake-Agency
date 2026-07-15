@@ -20,7 +20,7 @@ class AwakeSite {
     this.header = document.querySelector('[data-header]');
     this.menu = document.querySelector('[data-menu]');
     this.menuToggle = document.querySelector('[data-menu-toggle]');
-    this.navLinks = [...document.querySelectorAll('.site-header__nav-link[data-nav-link]')];
+    this.navLinks = [...document.querySelectorAll('.header__nav-link[data-nav-link]')];
     this.faqButtons = [...document.querySelectorAll('[data-faq-button]')];
     this.yearElements = [...document.querySelectorAll('[data-year]')];
     this.scrollFillElements = [...document.querySelectorAll('[data-scroll-fill]')];
@@ -82,7 +82,7 @@ class AwakeSite {
 
   setMenuOpen(isOpen) {
     this.menuToggle?.setAttribute('aria-expanded', String(isOpen));
-    this.menu?.classList.toggle('site-header__panel--open', isOpen);
+    this.menu?.classList.toggle('header__panel--open', isOpen);
     document.body.classList.toggle('page--menu-open', isOpen);
   }
 
@@ -167,29 +167,14 @@ class AwakeSite {
 
   updateScrollFill() {
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    const startLine = viewportHeight * 0.88;
-    const fillRange = Math.min(720, Math.max(360, viewportHeight * 0.58 + viewportWidth * 0.08));
+    const fillRange = Math.max(1, viewportHeight);
 
     this.scrollFillElements.forEach((element) => {
       const rect = element.getBoundingClientRect();
-      const progress = Math.min(1, Math.max(0, (startLine - rect.top) / fillRange));
-      const words = [...element.querySelectorAll('[data-scroll-fill-word]')];
+      const progress = Math.min(1, Math.max(0, (viewportHeight - rect.top) / fillRange));
+      const alpha = 0.16 + progress * 0.84;
 
-      if (!words.length) {
-        element.style.setProperty('--about-title-fill', `${Math.round(progress * 100)}%`);
-        return;
-      }
-
-      const fadeSpread = 1.85;
-      const fillCursor = progress * (words.length + fadeSpread);
-
-      words.forEach((word, index) => {
-        const wordProgress = Math.min(1, Math.max(0, (fillCursor - index) / fadeSpread));
-        const alpha = 0.16 + wordProgress * 0.84;
-
-        word.style.color = `rgba(23, 25, 28, ${alpha.toFixed(3)})`;
-      });
+      element.style.setProperty('--scroll-fill-alpha', alpha.toFixed(3));
     });
   }
 
@@ -243,7 +228,7 @@ class AwakeSite {
 
   setActiveLink(hash) {
     this.navLinks.forEach((link) => {
-      link.classList.toggle('site-header__nav-link--active', link.hash === hash);
+      link.classList.toggle('header__nav-link--active', link.hash === hash);
     });
   }
 }
